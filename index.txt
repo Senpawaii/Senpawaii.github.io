@@ -2,8 +2,8 @@ João Queirós - Portfolio
 
 # sidebar
 
-alt = Richard hanrick
-Richard hanrick
+alt = João Queirós
+João Queirós
 Web developer
 
 Show Contacts
