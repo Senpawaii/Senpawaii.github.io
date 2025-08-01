@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Queirós - Portfolio</title>
+
+    <!--
+      - favicon
+    -->
+    <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+    <!--
+      - custom css link
+    -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!--
+      - google font link
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!--
+  - #MAIN
+-->
+
+<main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+        <div class="sidebar-info">
+
+            <figure class="avatar-box">
+                <img src="./assets/images/profile_picture_round.png" alt="João Queirós" width="80">
+            </figure>
+
+            <div class="info-content">
+                <h1 class="name" title="João Queirós">João Queirós</h1>
+
+                <p class="title">Mid Software Engineer</p>
+            </div>
+
+            <button class="info_more-btn" data-sidebar-btn>
+                <span>Show Contacts</span>
+
+                <ion-icon name="chevron-down"></ion-icon>
+            </button>
+
+        </div>
+
+        <div class="sidebar-info_more">
+
+            <div class="separator"></div>
+
+            <ul class="contacts-list">
+
+                <li class="contact-item">
+
+                    <div class="icon-box">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">Email</p>
+
+                        <a href="mailto:joao.network.queiros@gmail.com" class="contact-link">joao.network.queiros@gmail.com</a>
+                    </div>
+
+                </li>
+
+                <li class="contact-item">
+
+                    <div class="icon-box">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">Birthday</p>
+
+                        <time datetime="2000-04-04">April 04, 2000</time>
+                    </div>
+
+                </li>
+
+                <li class="contact-item">
+
+                    <div class="icon-box">
+                        <ion-icon name="location-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">Location</p>
+
+                        <address>Lisbon, Portugal</address>
+                    </div>
+
+                </li>
+
+            </ul>
+
+            <div class="separator"></div>
+
+            <ul class="social-list">
+
+                <li class="social-item">
+                    <a href="https://www.linkedin.com/in/jo%C3%A3o-queir%C3%B3s-659549b0/" class="social-link">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+
+                </li>
+
+                <li class="social-item">
+                    <a href="https://github.com/Senpawaii" class="social-link">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </aside>
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+        <!--
+          - #NAVBAR
+        -->
+
+        <nav class="navbar">
+
+            <ul class="navbar-list">
+
+                <li class="navbar-item">
+                    <button class="navbar-link  active" data-nav-link>About</button>
+                </li>
+
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Resume</button>
+                </li>
+
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Portfolio</button>
+                </li>
+
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Blog</button>
+                </li>
+
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Contact</button>
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <!--
+          - #ABOUT
+        -->
+
+        <article class="about  active" data-page="about">
+
+            <header>
+                <h2 class="h2 article-title">About me</h2>
+            </header>
+
+            <section class="about-text">
+                <p>
+                    Hi, I’m João Queirós — a Mid Software Engineer based in Lisbon, Portugal.
+                </p>
+
+                <p>
+                    I hold a Master’s degree in Computer Science and Engineering from Instituto Superior Técnico
+                    (University of Lisbon), where I focused on distributed systems and microservices architecture. Over
+                    the past 2 years in the Fintech industry, I’ve applied these foundations to deliver scalable,
+                    cloud-ready solutions.
+                </p>
+
+                <p>
+                    My core stack includes Java (Spring Boot and Classic Spring), Angular, Docker, Kubernetes, and
+                    Oracle DB. I work with Kafka for event-driven systems and leverage tools like GitHub Actions,
+                    Bamboo, Helm, and ArgoCD to automate CI/CD and deployment workflows. I'm also experienced with
+                    Testcontainers, JUnit 5, Mockito, and PIT for robust automated and mutation testing.
+                </p>
+
+                <p>
+                    I design resilient systems using AWS (EC2, RDS), observability tools like Grafana and Jaeger, and
+                    apply architectural patterns such as Clean Architecture, Hexagonal Architecture, and Domain-Driven
+                    Design. I thrive in Agile teams, value collaboration, and enjoy tackling complex challenges with
+                    clarity and purpose.
+                </p>
+
+                <p>
+                    If you're interested in connecting or collaborating on impactful projects, feel free to reach out —
+                    I’m always open to new ideas and opportunities.
+                </p>
+            </section>
+
+
+            <!--
+              - service
+            -->
+
+            <section class="service">
+
+                <h3 class="h3 service-title">What i'm doing</h3>
+
+                <ul class="service-list">
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img src="./assets/images/full_stack.svg" alt="Fullstack Dev icon" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Full-Stack Development</h4>
+                            <p class="service-item-text">
+                                Developing applications across the entire technology stack.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img src="./assets/images/distributed_systems.svg" alt="distributed systems icon"
+                                 width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Distributed Systems Development</h4>
+                            <p class="service-item-text">
+                                High-performance and Reliable system development.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img src="./assets/images/cloud-computing.svg" alt="Cloud Computing icon" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Cloud Computing</h4>
+                            <p class="service-item-text">
+                                High-quality development of applications deployed and managed on cloud platforms.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img src="./assets/images/microservices.svg" alt="Microservices icon" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Microservices Architectures</h4>
+                            <p class="service-item-text">
+                                Building scalable and modular software systems using microservices architecture
+                                principles.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+
+            </section>
+
+            <div class="modal-container" data-modal-container>
+
+                <div class="overlay" data-overlay></div>
+
+                <section class="testimonials-modal">
+
+                    <button class="modal-close-btn" data-modal-close-btn>
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+
+                </section>
+
+            </div>
+
+        </article>
+
+        <!--
+          - #RESUME
+        -->
+
+        <article class="resume" data-page="resume">
+
+            <header>
+                <h2 class="h2 article-title">Resume</h2>
+            </header>
+
+            <section class="timeline">
+
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                    </div>
+
+                    <h3 class="h3">Experience</h3>
+                </div>
+
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Accenture Portugal - Fintech Context</h4>
+                        <span>Nov. 2023 — Present</span>
+                        <ul class="nested-timeline">
+                            <li>
+                                <h5 class="h5 timeline-item-title">Mid Full Stack Engineer</h5>
+                                <span>Apr. 2025 — Present</span>
+                                <ul class="timeline-description">
+                                    <li>Analyze business needs, propose and discuss solutions, then implement, test, integrate, and deliver them.</li>
+                                    <li>Configure CI/CD pipelines using GitHub Actions and manage deployments with ArgoCD.</li>
+                                    <li>Ensure test quality through Mutation Testing (e.g., PIT) and maintain rigorous automated testing standards.</li>
+                                    <li>Conduct performance testing and tracing using Jaeger to monitor distributed systems and identify bottlenecks.</li>
+                                    <li>Identified and resolved long-standing application bottlenecks, improving throughput and latency by approximately 300%.</li>
+                                    <li>Led migration of legacy applications to modern technology standards, upgrading backend to Spring Boot and frontend to Angular 19.</li>
+                                    <li>Co-led design and implementation of a monitoring tool tracking deployments, downtimes, error logs, and integrations for over 10 applications and their subcomponents.</li>
+                                    <li>Enforce security practices and controls between applications and services using Spring Security and OAuth 2 protocols.</li>
+                                    <li>Continue working with Spring Boot, Java 17/21, Docker, Kubernetes, Kafka, and other core technologies.</li>
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <h5 class="h5 timeline-item-title">Junior Full Stack Engineer</h5>
+                                <span>Nov. 2023 — Mar. 2025</span>
+                                <ul class="timeline-description">
+                                    <li>Collaborated closely with Senior and Tech Lead colleagues, critically evaluating proposed solutions using academic knowledge.</li>
+                                    <li>Implemented and rigorously tested solutions within an Agile team, ensuring business value and customer satisfaction.</li>
+                                    <li>Daily used Spring Boot, Java 17/21, JUnit, Docker, and Kafka; conducted code reviews for peer contributions.</li>
+                                    <li>Participated in migrating deployments to AWS Kubernetes clusters, improving CI/CD pipelines and significantly reducing feature delivery times.</li>
+                                    <li>Improved testing coverage health of multiple products maintained by the team, raising coverage from ranges of 20–30% up to above 90%.</li>
+                                    <li>Defined and implemented integration testing infrastructure with colleagues for legacy products, improving system stability and stakeholder confidence.</li>
+                                    <li>Co-led developments that unblocked a 3-year integration project between two platforms in a Fintech automation initiative, delivering a key milestone to stakeholders.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="timeline-item">
+
+                        <h4 class="h4 timeline-item-title">[INESC-ID Lisbon] Early Stage Researcher</h4>
+
+                        <span>Feb. '23 — Nov. '23</span>
+
+                        <p class="timeline-text">
+                            Responsible for conceiving, developing and evaluating a middleware layer
+                            that is able to expose to a distributed microservices’ system a set of data versions that
+                            are consistent with the
+                            Transactional Causal Consistency model.
+                        </p>
+
+                    </li>
+
+                </ol>
+
+            </section>
+
+            <section class="timeline">
+
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <ion-icon name="book-outline"></ion-icon>
+                    </div>
+
+                    <h3 class="h3">Education</h3>
+                </div>
+
+                <ol class="timeline-list">
+
+                    <li class="timeline-item">
+
+                        <h4 class="h4 timeline-item-title">University of Lisboa – Instituto Superior Técnico</h4>
+                        <h5 class="h5 timeline-item-title">Master of Science in Computer Science and Engineering</h5>
+
+                        <span>Sep. '21 — Nov. '23</span>
+
+                        <p class="timeline-text">
+                            Specializations in Distributed Systems and Data Science
+                        </p>
+                        <p class="timeline-text">
+                            Relevant courses taken:
+                        <ul class="academia-description-list">
+                            <li class="timeline-courses-list">Parallel and Distributed Computing</li>
+                            <li class="timeline-courses-list">Highly Dependable Systems</li>
+                            <li class="timeline-courses-list">Design of Distributed Applications</li>
+                            <li class="timeline-courses-list">Data Science</li>
+                            <li class="timeline-courses-list">Deep Learning</li>
+                            <li class="timeline-courses-list">Cloud Computing and Virtualization</li>
+                            <li class="timeline-courses-list">Data Analysis and Integration</li>
+                        </ul>
+                        </p>
+
+                    </li>
+
+                    <li class="timeline-item">
+
+                        <h4 class="h4 timeline-item-title">University of Lisboa – Instituto Superior Técnico</h4>
+                        <h5 class="h5 timeline-item-title">Bachelor of Science in Computer Science and Engineering</h5>
+
+                        <span>Sep.'18 — Jul.'21</span>
+
+                        <p class="timeline-text">
+                            Academic Merit Diploma 2019/2020 and 2020/2021
+                        </p>
+                        <p class="timeline-text">
+                            Relevant courses taken:
+                            <ul class="academia-description-list">
+                                <li class="timeline-courses-list">Distributed Systems</li>
+                                <li class="timeline-courses-list">Object-Oriented Programming</li>
+                                <li class="timeline-courses-list">Artificial Intelligence</li>
+                                <li class="timeline-courses-list">Probability and Statistics</li>
+                                <li class="timeline-courses-list">Algorithms</li>
+                            </ul>
+                        </p>
+                        <p class="timeline-text">
+                            Mentored a group of new students, fostering university integration through collaborative
+                            activities
+                        </p>
+
+                    </li>
+                </ol>
+            </section>
+
+            <section class="awards">
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <ion-icon name="trophy-outline"></ion-icon>
+                    </div>
+                    <h3 class="h3">Awards</h3>
+                </div>
+
+                <ol class="awards-list">
+                    <li class="awards-item with-link">
+                        <h4 class="h4 awards-item-title" onclick="openModal()" style="cursor: pointer;">
+                            Best Student Poster (INForum2023, Porto, Portugal) - Click me!
+                        </h4>
+                    </li>
+
+
+                    <li class="awards-item">
+                        <h4 class="h4 awards-item-title">Academic Merit Diploma 2020/2021</h4>
+                    </li>
+                    <li class="awards-item">
+                        <h4 class="h4 awards-item-title">Academic Merit Diploma 2019/2020</h4>
+                    </li>
+                </ol>
+
+                <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                    <div class="modal-content image-modal">
+                        <span class="close" onclick="closeModal()" role="button" aria-label="Close">&times;</span>
+                        <img src="assets/images/resume/Inforum-MicroTCC.jpg" alt="Diploma: Best Student Poster" class="diploma-image">
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="skill">
+
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <ion-icon name="rocket-outline"></ion-icon>
+                    </div>
+
+                    <h3 class="h3">My Skills</h3>
+                </div>
+
+                <ul class="skills-list content-card">
+
+                    <li class="skills-item">
+
+                        <div class="title-wrapper">
+                            <h5 class="h5">Python</h5>
+                        </div>
+
+                    </li>
+
+                    <li class="skills-item">
+
+                        <div class="title-wrapper">
+                            <h5 class="h5">Java</h5>
+                        </div>
+
+                    </li>
+
+                    <li class="skills-item">
+
+                        <div class="title-wrapper">
+                            <h5 class="h5">C/C++</h5>
+                        </div>
+
+                    </li>
+
+                    <li class="skills-item">
+
+                        <div class="title-wrapper">
+                            <h5 class="h5">JavaScript</h5>
+                        </div>
+
+                    </li>
+
+                    <li class="skills-item">
+
+                        <div class="title-wrapper">
+                            <h5 class="h5">Docker</h5>
+                        </div>
+
+                    </li>
+
+                    <li class="skills-item">
+
+                        <div class="title-wrapper">
+                            <h5 class="h5">Kubernetes</h5>
+                        </div>
+
+                    </li>
+
+                    <li class="skills-item">
+
+                        <div class="title-wrapper">
+                            <h5 class="h5">Amazon Web Services</h5>
+                        </div>
+
+                    </li>
+
+                    <li class="skills-item">
+
+                        <div class="title-wrapper">
+                            <h5 class="h5">Google Cloud Platform</h5>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+        <!--
+          - #PORTFOLIO
+        -->
+
+        <article class="portfolio" data-page="portfolio">
+
+            <header>
+                <h2 class="h2 article-title">Portfolio</h2>
+            </header>
+
+            <section class="projects">
+
+                <ul class="filter-list">
+
+                    <li class="filter-item">
+                        <button class="active" data-filter-btn>All</button>
+                    </li>
+
+                    <li class="filter-item">
+                        <button data-filter-btn>Web design</button>
+                    </li>
+
+                    <li class="filter-item">
+                        <button data-filter-btn>Applications</button>
+                    </li>
+
+                    <li class="filter-item">
+                        <button data-filter-btn>Web development</button>
+                    </li>
+
+                </ul>
+
+                <div class="filter-select-box">
+
+                    <button class="filter-select" data-select>
+
+                        <div class="select-value" data-selecct-value>Select category</div>
+
+                        <div class="select-icon">
+                            <ion-icon name="chevron-down"></ion-icon>
+                        </div>
+
+                    </button>
+
+                    <ul class="select-list">
+
+                        <li class="select-item">
+                            <button data-select-item>All</button>
+                        </li>
+
+                        <li class="select-item">
+                            <button data-select-item>Web design</button>
+                        </li>
+
+                        <li class="select-item">
+                            <button data-select-item>Applications</button>
+                        </li>
+
+                        <li class="select-item">
+                            <button data-select-item>Web development</button>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <ul class="project-list">
+
+                    <li class="project-item  active" data-filter-item data-category="web development">
+                        <a href="#">
+
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+
+                                <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                            </figure>
+
+                            <h3 class="project-title">Finance</h3>
+
+                            <p class="project-category">Web development</p>
+
+                        </a>
+                    </li>
+
+                    <li class="project-item  active" data-filter-item data-category="web development">
+                        <a href="#">
+
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+
+                                <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                            </figure>
+
+                            <h3 class="project-title">Orizon</h3>
+
+                            <p class="project-category">Web development</p>
+
+                        </a>
+                    </li>
+
+                    <li class="project-item  active" data-filter-item data-category="web design">
+                        <a href="#">
+
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+
+                                <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                            </figure>
+
+                            <h3 class="project-title">Fundo</h3>
+
+                            <p class="project-category">Web design</p>
+
+                        </a>
+                    </li>
+
+                    <li class="project-item  active" data-filter-item data-category="applications">
+                        <a href="#">
+
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+
+                                <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
+                            </figure>
+
+                            <h3 class="project-title">Brawlhalla</h3>
+
+                            <p class="project-category">Applications</p>
+
+                        </a>
+                    </li>
+
+                    <li class="project-item  active" data-filter-item data-category="web design">
+                        <a href="#">
+
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+
+                                <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
+                            </figure>
+
+                            <h3 class="project-title">DSM.</h3>
+
+                            <p class="project-category">Web design</p>
+
+                        </a>
+                    </li>
+
+                    <li class="project-item  active" data-filter-item data-category="web design">
+                        <a href="#">
+
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+
+                                <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
+                            </figure>
+
+                            <h3 class="project-title">MetaSpark</h3>
+
+                            <p class="project-category">Web design</p>
+
+                        </a>
+                    </li>
+
+                    <li class="project-item  active" data-filter-item data-category="web development">
+                        <a href="#">
+
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+
+                                <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
+                            </figure>
+
+                            <h3 class="project-title">Summary</h3>
+
+                            <p class="project-category">Web development</p>
+
+                        </a>
+                    </li>
+
+                    <li class="project-item  active" data-filter-item data-category="applications">
+                        <a href="#">
+
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+
+                                <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                            </figure>
+
+                            <h3 class="project-title">Task Manager</h3>
+
+                            <p class="project-category">Applications</p>
+
+                        </a>
+                    </li>
+
+                    <li class="project-item  active" data-filter-item data-category="web development">
+                        <a href="#">
+
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+
+                                <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
+                            </figure>
+
+                            <h3 class="project-title">Arrival</h3>
+
+                            <p class="project-category">Web development</p>
+
+                        </a>
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </article>
+
+
+        <!--
+          - #BLOG
+        -->
+
+        <article class="blog" data-page="blog">
+
+            <header>
+                <h2 class="h2 article-title">Blog</h2>
+            </header>
+
+            <section class="blog-posts">
+
+                <ul class="blog-posts-list">
+
+                    <li class="blog-post-item">
+                        <a href="#">
+
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                            </figure>
+
+                            <div class="blog-content">
+
+                                <div class="blog-meta">
+                                    <p class="blog-category">Design</p>
+
+                                    <span class="dot"></span>
+
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+
+                                <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
+
+                                <p class="blog-text">
+                                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+                                </p>
+
+                            </div>
+
+                        </a>
+                    </li>
+
+                    <li class="blog-post-item">
+                        <a href="#">
+
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                            </figure>
+
+                            <div class="blog-content">
+
+                                <div class="blog-meta">
+                                    <p class="blog-category">Design</p>
+
+                                    <span class="dot"></span>
+
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+
+                                <h3 class="h3 blog-item-title">Best fonts every designer</h3>
+
+                                <p class="blog-text">
+                                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
+                                </p>
+
+                            </div>
+
+                        </a>
+                    </li>
+
+                    <li class="blog-post-item">
+                        <a href="#">
+
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                            </figure>
+
+                            <div class="blog-content">
+
+                                <div class="blog-meta">
+                                    <p class="blog-category">Design</p>
+
+                                    <span class="dot"></span>
+
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+
+                                <h3 class="h3 blog-item-title">Design digest #80</h3>
+
+                                <p class="blog-text">
+                                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam
+                                    corporis suscipit.
+                                </p>
+
+                            </div>
+
+                        </a>
+                    </li>
+
+                    <li class="blog-post-item">
+                        <a href="#">
+
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
+                            </figure>
+
+                            <div class="blog-content">
+
+                                <div class="blog-meta">
+                                    <p class="blog-category">Design</p>
+
+                                    <span class="dot"></span>
+
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+
+                                <h3 class="h3 blog-item-title">UI interactions of the week</h3>
+
+                                <p class="blog-text">
+                                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco
+                                    laboris nisi.
+                                </p>
+
+                            </div>
+
+                        </a>
+                    </li>
+
+                    <li class="blog-post-item">
+                        <a href="#">
+
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
+                            </figure>
+
+                            <div class="blog-content">
+
+                                <div class="blog-meta">
+                                    <p class="blog-category">Design</p>
+
+                                    <span class="dot"></span>
+
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+
+                                <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
+
+                                <p class="blog-text">
+                                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+
+                            </div>
+
+                        </a>
+                    </li>
+
+                    <li class="blog-post-item">
+                        <a href="#">
+
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
+                            </figure>
+
+                            <div class="blog-content">
+
+                                <div class="blog-meta">
+                                    <p class="blog-category">Design</p>
+
+                                    <span class="dot"></span>
+
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+
+                                <h3 class="h3 blog-item-title">Design digest #79</h3>
+
+                                <p class="blog-text">
+                                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
+                                </p>
+
+                            </div>
+
+                        </a>
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </article>
+
+
+        <!--
+          - #CONTACT
+        -->
+
+        <article class="contact" data-page="contact">
+
+            <header>
+                <h2 class="h2 article-title">Contact</h2>
+            </header>
+
+            <section class="mapbox" data-mapbox>
+                <figure>
+                    <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+                            width="400" height="300" loading="lazy"></iframe>
+                </figure>
+            </section>
+
+            <section class="contact-form">
+
+                <h3 class="h3 form-title">Contact Form</h3>
+
+                <form action="#" class="form" data-form>
+
+                    <div class="input-wrapper">
+                        <input type="text" name="fullname" class="form-input" placeholder="Full name" required
+                               data-form-input>
+
+                        <input type="email" name="email" class="form-input" placeholder="Email address" required
+                               data-form-input>
+                    </div>
+
+                    <textarea name="message" class="form-input" placeholder="Your Message" required
+                              data-form-input></textarea>
+
+                    <button class="form-btn" type="submit" disabled data-form-btn>
+                        <ion-icon name="paper-plane"></ion-icon>
+                        <span>Send Message</span>
+                    </button>
+
+                </form>
+
+            </section>
+
+        </article>
+
+    </div>
+
+</main>
+
+
+<!--
+  - custom js link
+-->
+<script src="./assets/js/script.js"></script>
+
+<!--
+  - ionicon link
+-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
