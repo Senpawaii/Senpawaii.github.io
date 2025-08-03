@@ -158,23 +158,91 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
-function openModal() {
-  document.getElementById("imageModal").style.display = "block";
-}
+class AwardsModal {
+  constructor() {
+    this.modal = null;
+    this.isOpen = false;
+    this.init();
+  }
 
-function closeModal() {
-  document.getElementById("imageModal").style.display = "none";
-}
+  init() {
+    // Add event listeners for modal triggers
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-modal-trigger]');
+      if (trigger) {
+        e.preventDefault();
+        e.stopPropagation();
+        const modalId = trigger.getAttribute('data-modal-trigger');
+        this.openModal(modalId);
+      }
 
-window.onclick = function(event) {
-  const modal = document.getElementById("imageModal");
-  if (event.target === modal) {
-    modal.style.display = "none";
+      const closeBtn = e.target.closest('[data-modal-close]');
+      if (closeBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.closeModal();
+      }
+
+      // Close modal when clicking outside
+      if (e.target.classList.contains('awards-modal')) {
+        this.closeModal();
+      }
+    });
+
+    // Handle escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isOpen) {
+        this.closeModal();
+      }
+    });
+
+    // Prevent scrolling when modal is open
+    this.preventScroll = (e) => {
+      if (this.isOpen) {
+        e.preventDefault();
+      }
+    };
+  }
+
+  openModal(modalId) {
+    this.modal = document.getElementById(modalId);
+    if (!this.modal) return;
+
+    this.isOpen = true;
+    document.body.style.overflow = 'hidden';
+    this.modal.classList.add('show');
+
+    // Focus management for accessibility
+    const closeBtn = this.modal.querySelector('[data-modal-close]');
+    if (closeBtn) {
+      closeBtn.focus();
+    }
+
+    // Add touch event listeners for mobile
+    document.addEventListener('touchmove', this.preventScroll, { passive: false });
+  }
+
+  closeModal() {
+    if (!this.modal) return;
+
+    this.isOpen = false;
+    document.body.style.overflow = '';
+    this.modal.classList.remove('show');
+
+    // Remove touch event listeners
+    document.removeEventListener('touchmove', this.preventScroll);
+
+    // Clean up after animation
+    setTimeout(() => {
+      if (this.modal && !this.modal.classList.contains('show')) {
+        this.modal = null;
+      }
+    }, 300);
   }
 }
 
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
-    closeModal();
-  }
+// Initialize modal when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new AwardsModal();
 });
+

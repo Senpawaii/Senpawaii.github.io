@@ -1147,49 +1147,302 @@ li.timeline-courses-list {
 }
 
 /**
- * awards
+ *  Awards Section
  */
 
-.awards { margin-bottom: 30px; }
+.awards {
+  margin-bottom: 30px;
+}
 
 .awards .title-wrapper {
-   display: flex;
-   align-items: center;
-   gap: 15px;
-   margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
+/* Hide old awards styles */
 .awards-list {
-  font-size: var(--fs-6);
-  margin-left: 45px;
+  display: none;
 }
 
-.awards-item { position: relative; }
-
-.awards-item-title {
-  font-size: var(--fs-6);
-  line-height: 1.3;
-  margin-bottom: 7px;
+.awards-item {
+  display: none;
 }
 
-.awards-item::after {
+/* New awards grid layout */
+.awards-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.award-card {
+  position: relative;
+  background: var(--border-gradient-onyx);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-1);
+  overflow: hidden;
+}
+
+.award-card::before {
   content: "";
   position: absolute;
-  top: 5px;
-  left: -22px;
-  height: 6px;
-  width: 6px;
-  background: var(--text-gradient-yellow);
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.award-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-3);
+}
+
+.award-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.award-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--orange-yellow-crayola);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--smoky-black);
+  flex-shrink: 0;
+}
+
+.award-content {
+  flex: 1;
+}
+
+.award-title {
+  color: var(--white-2);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-500);
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.award-details {
+  color: var(--light-gray-70);
+  font-size: var(--fs-7);
+  margin-bottom: 15px;
+}
+
+.award-description {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Interactive award card */
+.award-card.interactive {
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--transition-1);
+}
+
+.award-card.interactive:hover {
+  border-color: var(--orange-yellow-crayola);
+}
+
+.award-card.interactive::after {
+  content: "🔍 Click to view certificate";
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: var(--fs-8);
+  font-weight: var(--fw-500);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--transition-1);
+}
+
+.award-card.interactive:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Award type badges */
+.award-badge {
+  display: inline-block;
+  background: var(--vegas-gold);
+  color: var(--smoky-black);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: var(--fs-8);
+  font-weight: var(--fw-500);
+  margin-bottom: 10px;
+}
+
+.award-badge.academic {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.award-badge.research {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+/* Improved Modal Styles */
+.awards-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity var(--transition-2);
+}
+
+.awards-modal.show {
+  display: flex !important;
+  opacity: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.awards-modal .modal-content {
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+  box-shadow: var(--shadow-5);
+  transform: scale(0.8);
+  transition: transform var(--transition-2);
+  overflow: hidden;
+}
+
+.awards-modal.show .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--jet);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  color: var(--white-2);
+  font-size: var(--fs-4);
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--light-gray-70);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--jet);
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-1);
 }
 
-.awards-descriptions {
-    color: var(--light-gray);
-    font-weight: var(--fw-300);
-    line-height: 1.6;
+.modal-close:hover {
+  background: var(--jet);
+  color: var(--white-2);
 }
 
+.modal-body {
+  padding: 0;
+  text-align: center;
+}
+
+.certificate-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+/* Hide old modal styles */
+.modal {
+  display: none !important;
+}
+
+.modal-content.image-modal {
+  display: none !important;
+}
+
+.diploma-image {
+  display: none !important;
+}
+
+.close {
+  display: none !important;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .award-card {
+    padding: 20px;
+  }
+
+  .awards-modal .modal-content {
+    max-width: 95vw;
+    max-height: 85vh;
+  }
+
+  .certificate-image {
+    max-height: 60vh;
+  }
+
+  .award-card.interactive::after {
+    position: static;
+    display: block;
+    margin-top: 10px;
+    opacity: 1;
+    transform: none;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .award-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .award-icon {
+    margin-bottom: 10px;
+  }
+}
 
 
 

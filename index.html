@@ -441,30 +441,65 @@
                     <h3 class="h3">Awards</h3>
                 </div>
 
-                <ol class="awards-list">
-                    <li class="awards-item with-link">
-                        <h4 class="h4 awards-item-title" onclick="openModal()" style="cursor: pointer;">
-                            Best Student Poster (INForum2023, Porto, Portugal) - Click me!
-                        </h4>
-                    </li>
+                <div class="awards-grid">
+                    <!-- Best Student Poster Award -->
+                    <div class="award-card interactive" data-modal-trigger="poster-modal">
+                        <div class="award-header">
+                            <div class="award-icon">🏆</div>
+                            <div class="award-content">
+                                <div class="award-badge research">Research Excellence</div>
+                                <h4 class="award-title">Best Student Poster</h4>
+                                <div class="award-details">INForum 2023, Porto, Portugal</div>
+                            </div>
+                        </div>
+                        <p class="award-description">
+                            Recognized for outstanding research presentation on distributed systems and consistency models at Portugal's premier informatics conference.
+                        </p>
+                    </div>
 
+                    <!-- Academic Merit 2020/2021 -->
+                    <div class="award-card">
+                        <div class="award-header">
+                            <div class="award-icon">🎓</div>
+                            <div class="award-content">
+                                <div class="award-badge academic">Academic Excellence</div>
+                                <h4 class="award-title">Academic Merit Diploma</h4>
+                                <div class="award-details">Academic Year 2020/2021</div>
+                            </div>
+                        </div>
+                        <p class="award-description">
+                            Awarded for exceptional academic performance and outstanding grades during the bachelor's degree program.
+                        </p>
+                    </div>
 
-                    <li class="awards-item">
-                        <h4 class="h4 awards-item-title">Academic Merit Diploma 2020/2021</h4>
-                    </li>
-                    <li class="awards-item">
-                        <h4 class="h4 awards-item-title">Academic Merit Diploma 2019/2020</h4>
-                    </li>
-                </ol>
-
-                <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-                    <div class="modal-content image-modal">
-                        <span class="close" onclick="closeModal()" role="button" aria-label="Close">&times;</span>
-                        <img src="assets/images/resume/Inforum-MicroTCC.jpg" alt="Diploma: Best Student Poster" class="diploma-image">
+                    <!-- Academic Merit 2019/2020 -->
+                    <div class="award-card">
+                        <div class="award-header">
+                            <div class="award-icon">🎓</div>
+                            <div class="award-content">
+                                <div class="award-badge academic">Academic Excellence</div>
+                                <h4 class="award-title">Academic Merit Diploma</h4>
+                                <div class="award-details">Academic Year 2019/2020</div>
+                            </div>
+                        </div>
+                        <p class="award-description">
+                            Recognized for maintaining high academic standards and demonstrating consistent excellence in coursework.
+                        </p>
                     </div>
                 </div>
             </section>
 
+            <div id="poster-modal" class="awards-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="modal-title" class="modal-title">Best Student Poster Certificate</h4>
+                        <button class="modal-close" data-modal-close aria-label="Close modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="assets/images/resume/Inforum-MicroTCC.jpg" alt="Best Student Poster Certificate - INForum 2023" class="certificate-image">
+                    </div>
+                </div>
+            </div>
 
             <section class="skill">
                 <div class="title-wrapper">
