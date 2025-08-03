@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
@@ -61,18 +59,21 @@ const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
+// Check if select element exists before adding event listener
+if (select) {
+  select.addEventListener("click", function () { elementToggleFunc(this); });
 
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
+  // add event to all select items
+  for (let i = 0; i < selectItems.length; i++) {
+    selectItems[i].addEventListener("click", function () {
 
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
+      let selectedValue = this.innerText.toLowerCase();
+      selectValue.innerText = this.innerText;
+      elementToggleFunc(select);
+      filterFunc(selectedValue);
 
-  });
+    });
+  }
 }
 
 // filter variables
@@ -94,20 +95,23 @@ const filterFunc = function (selectedValue) {
 
 }
 
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
+// add event to all filter button items for large screen
 for (let i = 0; i < filterBtn.length; i++) {
 
   filterBtn[i].addEventListener("click", function () {
 
     let selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
+
     filterFunc(selectedValue);
 
-    lastClickedBtn.classList.remove("active");
+    // Remove active class from all buttons
+    for (let j = 0; j < filterBtn.length; j++) {
+      filterBtn[j].classList.remove("active");
+    }
+
+    // Add active class to clicked button
     this.classList.add("active");
-    lastClickedBtn = this;
 
   });
 
@@ -120,18 +124,21 @@ const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
+// Check if form elements exist before adding event listeners
+if (form && formBtn) {
+  // add event to all form input field
+  for (let i = 0; i < formInputs.length; i++) {
+    formInputs[i].addEventListener("input", function () {
 
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
+      // check form validation
+      if (form.checkValidity()) {
+        formBtn.removeAttribute("disabled");
+      } else {
+        formBtn.setAttribute("disabled", "");
+      }
 
-  });
+    });
+  }
 }
 
 
@@ -158,91 +165,45 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
-class AwardsModal {
-  constructor() {
-    this.modal = null;
-    this.isOpen = false;
-    this.init();
+// Awards modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Get modal elements
+  const modal = document.getElementById('poster-modal');
+  const modalTrigger = document.querySelector('[data-modal-trigger="poster-modal"]');
+  const modalClose = document.querySelector('[data-modal-close]');
+
+  // Check if elements exist before adding event listeners
+  if (modalTrigger && modal) {
+    // Open modal
+    modalTrigger.addEventListener('click', function() {
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
   }
 
-  init() {
-    // Add event listeners for modal triggers
-    document.addEventListener('click', (e) => {
-      const trigger = e.target.closest('[data-modal-trigger]');
-      if (trigger) {
-        e.preventDefault();
-        e.stopPropagation();
-        const modalId = trigger.getAttribute('data-modal-trigger');
-        this.openModal(modalId);
-      }
+  if (modalClose && modal) {
+    // Close modal
+    modalClose.addEventListener('click', function() {
+      modal.classList.remove('show');
+      document.body.style.overflow = ''; // Restore scrolling
+    });
+  }
 
-      const closeBtn = e.target.closest('[data-modal-close]');
-      if (closeBtn) {
-        e.preventDefault();
-        e.stopPropagation();
-        this.closeModal();
-      }
-
-      // Close modal when clicking outside
-      if (e.target.classList.contains('awards-modal')) {
-        this.closeModal();
+  if (modal) {
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = ''; // Restore scrolling
       }
     });
 
-    // Handle escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.isOpen) {
-        this.closeModal();
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('show')) {
+        modal.classList.remove('show');
+        document.body.style.overflow = ''; // Restore scrolling
       }
     });
-
-    // Prevent scrolling when modal is open
-    this.preventScroll = (e) => {
-      if (this.isOpen) {
-        e.preventDefault();
-      }
-    };
   }
-
-  openModal(modalId) {
-    this.modal = document.getElementById(modalId);
-    if (!this.modal) return;
-
-    this.isOpen = true;
-    document.body.style.overflow = 'hidden';
-    this.modal.classList.add('show');
-
-    // Focus management for accessibility
-    const closeBtn = this.modal.querySelector('[data-modal-close]');
-    if (closeBtn) {
-      closeBtn.focus();
-    }
-
-    // Add touch event listeners for mobile
-    document.addEventListener('touchmove', this.preventScroll, { passive: false });
-  }
-
-  closeModal() {
-    if (!this.modal) return;
-
-    this.isOpen = false;
-    document.body.style.overflow = '';
-    this.modal.classList.remove('show');
-
-    // Remove touch event listeners
-    document.removeEventListener('touchmove', this.preventScroll);
-
-    // Clean up after animation
-    setTimeout(() => {
-      if (this.modal && !this.modal.classList.contains('show')) {
-        this.modal = null;
-      }
-    }, 300);
-  }
-}
-
-// Initialize modal when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  new AwardsModal();
 });
-
