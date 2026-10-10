@@ -3,7 +3,7 @@
 Personal site. A profile column and a tabbed content card (About, Experience, Projects, Stack, Contact) sit over an animated factory, where a crew of chibi agents works the conveyor lines. Each tab has its own URL hash, e.g. `/#projects`.
 
 - **Stack:** [Astro](https://astro.build) (static output, no client framework), plain CSS, one small inline script.
-- **Content:** all text lives in `src/data/content.ts`, and the tab panels are in `src/pages/index.astro`.
+- **Content:** all text lives in `src/data/content.ts`; the tabs are in `src/pages/index.astro` and the printable CV is `src/pages/cv.astro`.
 - **Backdrop:** `src/components/` (`Backdrop`, `Machine`, `Chibi`).
 
 ```sh

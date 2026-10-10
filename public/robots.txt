@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://senpawaii.github.io/sitemap-index.xml

@@ -1,0 +1,27 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/fraunces';
+import '../styles/global.css';
+import Backdrop from '../components/Backdrop.astro';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found · João Queirós</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <Backdrop />
+    <div class="page">
+      <main class="card glass" style="height:auto;max-width:640px;padding:2.6rem 2.4rem;">
+        <p class="tag" style="align-self:flex-start">404</p>
+        <h1 style="font-family:var(--font-display);font-size:2.4rem;margin:.6rem 0 .4rem;letter-spacing:-.02em;">This page isn't on the line.</h1>
+        <p style="margin:0 0 1.4rem;color:var(--ink-2)">The link may be old or mistyped. The rest of the site is one click away.</p>
+        <a class="btn" style="align-self:flex-start" href="/">Back to the home page</a>
+      </main>
+    </div>
+  </body>
+</html>

@@ -159,3 +159,30 @@ export const awards = [
   { title: 'Academic Merit Diploma', where: '2020/2021', text: 'Top academic performance in the BSc.', poster: false },
   { title: 'Academic Merit Diploma', where: '2019/2020', text: 'Top academic performance in the BSc.', poster: false },
 ];
+
+export const results = [
+  { value: '~300%', label: 'throughput and latency gains on a legacy platform', where: 'Accenture' },
+  { value: '20→90%+', label: 'test coverage across several products', where: 'Accenture' },
+  { value: '10+', label: 'applications covered by a monitoring tool I co-designed', where: 'Accenture' },
+  { value: '95%+', label: 'fewer consistency violations in read operations (µTCC)', where: 'INESC-ID' },
+] as const;
+
+export const glance = [
+  ['Now', 'Software Engineer at Pictet Tech'],
+  ['Focus', 'Distributed systems, orchestration and AI-assisted automation'],
+  ['Based in', 'Lisbon, Portugal (hybrid)'],
+  ['Education', 'MSc in Computer Science and Engineering, Instituto Superior Técnico'],
+  ['Recognition', 'Best Student Poster, INForum 2023'],
+] as const;
+
+export const research = {
+  title: 'µTCC: Transactional Causal Consistency for microservices',
+  poster: 'Suporte para Coerência Causal Transacional em Sistemas de Microsserviços',
+  where: 'INESC-ID Lisbon · INForum 2023, Porto',
+  summary:
+    'A middleware layer that gives a distributed microservices system data versions consistent with Transactional Causal Consistency. It was my MSc research and won Best Student Poster at INForum 2023.',
+  results: [
+    'Removed consistency violations in over 95% of executed read operations.',
+    'Latency penalty of up to 25%, largely offset by fewer aborts and re-executions.',
+  ],
+} as const;
