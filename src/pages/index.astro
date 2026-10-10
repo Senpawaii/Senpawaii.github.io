@@ -138,6 +138,7 @@ const tabs = [
                     <div class="role">
                       <p class="role-title">{r.title} {r.when && <span class="when">{r.when}</span>}</p>
                       <ul>{r.points.map((p) => <li>{p}</li>)}</ul>
+                      {r.tech && <ul class="chips small role-tech" aria-label="Technologies">{r.tech.map((t) => <li>{t}</li>)}</ul>}
                     </div>
                   ))}
                 </li>
@@ -228,7 +229,7 @@ const tabs = [
                 <strong>GitHub</strong><span>See the code</span>
               </a>
               <a class="big-link" href="/cv/">
-                <strong>CV</strong><span>Printable one-page summary</span>
+                <strong>CV</strong><span>Printable two-page summary</span>
               </a>
             </div>
           </section>
