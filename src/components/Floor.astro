@@ -17,31 +17,31 @@ const st = (id: string) => ({ id: id as any, label: s[id].label, sub: s[id].sub,
       </pattern>
     </defs>
     <rect width="1600" height="900" fill="url(#tiles)" />
-    <rect width="1600" height="70" fill="#d9ccb2" />
-    <rect y="62" width="1600" height="12" fill="url(#hazard)" opacity=".85" />
-    <path d="M60 480H1400" stroke="#2b2a28" stroke-width="2" opacity="0" />
-    <!-- belt -->
-    <rect x="0" y="452" width="1330" height="86" rx="10" fill="#5d6b78" stroke="#2b2a28" stroke-width="5" />
-    <rect x="0" y="466" width="1330" height="58" fill="#3f4a54" />
-    <rect class="belt-lines" x="0" y="466" width="1330" height="58" fill="url(#beltstripes)" />
-    <pattern id="beltstripes" width="44" height="58" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="6" height="58" fill="#fff" opacity=".13" /></pattern>
-    <g stroke="#2b2a28" stroke-width="5" fill="#5d6b78">
-      <circle cx="40" cy="495" r="26" /><circle cx="1290" cy="495" r="26" />
+    <!-- back wall: skylights, overhead pipe and lamps -->
+    <rect width="1600" height="56" fill="#d9ccb2" /><rect y="52" width="1600" height="6" fill="#2b2a28" opacity=".7" />
+    <g fill="#cfe9ee" stroke="#2b2a28" stroke-width="3">
+      {[0, 1, 2, 3, 4].map((i) => <rect x={110 + i * 310} y="10" width="170" height="30" rx="5" />)}
     </g>
-    <g class="cogs" fill="none" stroke="#fff8e8" stroke-width="4" stroke-linecap="round" opacity=".8">
-      <path d="M40 481v28M26 495h28" /><path d="M1290 481v28M1276 495h28" />
-    </g>
-    <!-- chute into the dock -->
-    <path d="M1316 520l110 80v110H1230V600z" fill="#5d6b78" stroke="#2b2a28" stroke-width="5" stroke-linejoin="round" />
-    <!-- floor strips -->
-    <rect x="0" y="838" width="1600" height="62" fill="#d9ccb2" /><rect y="838" width="1600" height="10" fill="url(#hazard)" opacity=".85" />
+    <!-- walkway between the two lines -->
+    <rect y="403" width="1600" height="104" fill="#2b2a28" opacity=".05" />
+    <path d="M0 405H1600M0 505H1600" stroke="#f5b82e" stroke-width="4" stroke-dasharray="26 18" />
+    <!-- bottom edge -->
+    <rect y="855" width="1600" height="45" fill="#d9ccb2" /><rect y="855" width="1600" height="10" fill="url(#hazard)" opacity=".85" />
   </svg>
+
+  <!-- two conveyor lines joined by a vertical pipe -->
+  <div class="belt belt-1"></div>
+  <div class="belt belt-2"></div>
+  <div class="belt belt-pipe"></div>
+  <span class="roller roller-a"></span><span class="roller roller-b"></span>
 
   <div class="slot slot-about"><Station {...st('about')} /></div>
   <div class="slot slot-stack"><Station {...st('stack')} /></div>
   <div class="slot slot-resume"><Station {...st('resume')} /></div>
   <div class="slot slot-contact"><Station {...st('contact')} /></div>
   <div class="slot slot-projects"><Station {...st('projects')} /></div>
+
+  <div class="gate" aria-hidden="true"><i></i><i></i><b>QA</b></div>
 
   <div class="crates" aria-hidden="true">
     {[0, 1, 2, 3, 4].map((i) => <span class="crate" style={`--i:${i}`}><i></i></span>)}
@@ -53,5 +53,5 @@ const st = (id: string) => ({ id: id as any, label: s[id].label, sub: s[id].sub,
   <Chibi class="r-tester" kind="wisp" tool="flag" label="Wisp · Tester" delay={1.6} />
   <Chibi class="r-patrol" kind="hardy" label="Hardy · Foreman" delay={0.3} />
 
-  <p class="hint" aria-hidden="true">Click a station, or press 1 to 5</p>
+  <p class="hint" aria-hidden="true">Click a machine, or press 1 to 5</p>
 </div>
