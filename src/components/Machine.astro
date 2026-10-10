@@ -1,7 +1,7 @@
 ---
 import type { StationId } from '../data/content';
-interface Props { id: StationId; label: string; sub: string; k: string; color: string }
-const { id, label, sub, k, color } = Astro.props;
+interface Props { id: StationId; color: string }
+const { id, color } = Astro.props;
 
 const K = '#2b2a28';
 const S = `stroke="${K}" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"`;
@@ -116,7 +116,4 @@ const art: Record<StationId, { vb: string; svg: string }> = {
   },
 };
 ---
-<button class="station" data-station={id} style={`--s:${color}`} aria-haspopup="dialog">
-  <span class="sign"><kbd aria-hidden="true">{k}</kbd><span class="sign-text"><b>{label}</b><small>{sub}</small></span></span>
-  <svg class="machine" viewBox={art[id].vb} aria-hidden="true" preserveAspectRatio="xMidYMax meet" set:html={art[id].svg} />
-</button>
+<svg class="machine" style={`--s:${color}`} viewBox={art[id].vb} aria-hidden="true" preserveAspectRatio="xMidYMax meet" set:html={art[id].svg} />

@@ -8,14 +8,6 @@ export const profile = {
 
 export type StationId = 'about' | 'stack' | 'projects' | 'resume' | 'contact';
 
-export const stations: { id: StationId; key: string; label: string; sub: string }[] = [
-  { id: 'about', key: '1', label: "Foreman's Office", sub: 'About me' },
-  { id: 'stack', key: '2', label: 'Engineering Bay', sub: 'Stack & tools' },
-  { id: 'resume', key: '3', label: 'Records Room', sub: 'Resume & awards' },
-  { id: 'contact', key: '4', label: 'Dispatch', sub: 'Get in touch' },
-  { id: 'projects', key: '5', label: 'Output Dock', sub: 'Shipped projects' },
-];
-
 export const crew = [
   { name: 'Plip', role: 'Planner', kind: 'plip', tool: 'clipboard', job: 'Breaks a goal into small steps I can check.' },
   { name: 'Sparko', role: 'Builder', kind: 'sparko', tool: 'wrench', job: 'Writes the code, one scoped change at a time.' },
@@ -123,7 +115,8 @@ export const experience = [
         title: 'Early Stage Researcher',
         when: '',
         points: [
-          'Designed, built and evaluated middleware that gives a microservices system versions of data consistent with Transactional Causal Consistency.',
+          'Designed, built and evaluated µTCC, middleware that gives a microservices system data versions consistent with Transactional Causal Consistency.',
+          'Eliminated consistency violations in over 95% of read operations, at a latency penalty of up to 25% that fewer aborts and re-executions largely offset.',
         ],
       },
     ],
@@ -146,7 +139,7 @@ export const education = [
 ];
 
 export const awards = [
-  { title: 'Best Student Poster', where: 'INForum 2023, Porto', text: 'For research on consistency in distributed microservices (MicroTCC).', poster: true },
+  { title: 'Best Student Poster', where: 'INForum 2023, Porto', text: 'For µTCC, a middleware that removed consistency violations in over 95% of read operations in microservices.', poster: true },
   { title: 'Academic Merit Diploma', where: '2020/2021', text: 'Top academic performance in the BSc.', poster: false },
   { title: 'Academic Merit Diploma', where: '2019/2020', text: 'Top academic performance in the BSc.', poster: false },
 ];
