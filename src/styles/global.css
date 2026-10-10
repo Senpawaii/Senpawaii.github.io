@@ -198,6 +198,12 @@ a { color: inherit; }
 .results span { font-size: .9rem; line-height: 1.35; color: var(--ink); font-weight: 500; }
 .results small { margin-top: .25rem; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
 
+.badges { list-style: none; padding: 0; margin: 0 0 2.2rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.badges li { position: relative; padding: 1rem 1.2rem 1rem 3.4rem; border-radius: 16px; background: linear-gradient(135deg, #fff8e6, #fff); border: 1px solid rgba(232,163,23,.45); }
+.badges li::before { content: '★'; position: absolute; left: 1.1rem; top: 1rem; width: 1.7rem; height: 1.7rem; display: grid; place-items: center; border-radius: 50%; background: var(--gold); color: #fff; font-size: .95rem; }
+.badge-label { display: block; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.badges strong { display: block; font-size: 1rem; margin: .1rem 0 .15rem; }
+.panes .badges p { margin: 0; font-size: .88rem; line-height: 1.45; color: var(--ink-2); }
 .about-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(260px, 1fr); gap: 2.4rem; align-items: start; }
 .glance { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 1.3rem 1.4rem 1.4rem; }
 .panes .glance h3 { margin: 0 0 .8rem; }
@@ -263,6 +269,7 @@ a { color: inherit; }
   .results li:nth-child(3) { border-left: none; }
   .results li:nth-child(n+3) { border-top: 1px solid var(--line); }
   .about-grid, .research { grid-template-columns: minmax(0, 1fr); }
+  .badges { grid-template-columns: minmax(0, 1fr); }
   .stack-grid, .cards.three, .cards.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-links { grid-template-columns: minmax(0, 1fr); }
 }

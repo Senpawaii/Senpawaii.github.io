@@ -89,6 +89,7 @@ export const experience = [
           'Automated manual, time-intensive operational processes, which cut processing overhead for internal teams.',
           'Lead the project within the team: review code, mentor engineers, and push for good practice in collaboration, quality and system design.',
           'Define and prioritise the backlog with Product Owners and Project Managers, and work directly with stakeholders and end users on discovery and feedback.',
+          'Won the Pictet Tech AI Challenge 2025 with a stock market trading orchestration platform that leveraged multiple agents, and was a finalist in the Pictet Tech Innovation Challenge 2026.',
           'Build and maintain CI/CD with GitHub Actions and ArgoCD, run observability and incident analysis on the LGTM stack, and enforce OAuth2 and Spring Security across services.',
         ],
       },
@@ -158,10 +159,17 @@ export const education = [
 ];
 
 export const awards = [
+  { title: 'Pictet Tech Innovation Challenge', where: '2026 · Finalist', text: 'Finalist in the internal innovation challenge at Pictet Tech.', poster: false },
+  { title: 'Pictet Tech AI Challenge', where: '2025 · Winner', text: 'Winning entry: a stock market trading orchestration platform that leveraged multiple agents.', poster: false },
   { title: 'Best Student Poster', where: 'INForum 2023, Porto', text: 'For µTCC, a middleware that removed consistency violations in over 95% of read operations in microservices.', poster: true },
-  { title: 'Academic Merit Diploma', where: '2020/2021', text: 'Top academic performance in the BSc.', poster: false },
-  { title: 'Academic Merit Diploma', where: '2019/2020', text: 'Top academic performance in the BSc.', poster: false },
+  { title: 'Academic Merit Diploma', where: '2019/20 and 2020/21', text: 'Top academic performance in the BSc, in two consecutive years.', poster: false },
 ];
+
+export const recognition = [
+  { label: 'Winner', title: 'Pictet Tech AI Challenge 2025', text: 'A stock market trading orchestration platform that leveraged multiple agents.' },
+  { label: 'Finalist', title: 'Pictet Tech Innovation Challenge 2026', text: '' },
+  { label: 'Best Student Poster', title: 'INForum 2023', text: 'For the µTCC research on microservices consistency.' },
+] as const;
 
 export const results = [
   { value: 'End to end', label: 'Owner of an AI-powered automation platform, from architecture to delivery', where: 'Pictet Tech' },
@@ -175,7 +183,7 @@ export const glance = [
   ['Focus', 'Distributed systems, orchestration and AI-assisted automation'],
   ['Based in', 'Lisbon, Portugal (hybrid)'],
   ['Education', 'MSc in Computer Science and Engineering, Instituto Superior Técnico'],
-  ['Recognition', 'Best Student Poster, INForum 2023 (MSc research)'],
+  ['Recognition', 'Winner, Pictet Tech AI Challenge 2025 · Finalist, Pictet Tech Innovation Challenge 2026'],
 ] as const;
 
 export const research = {
