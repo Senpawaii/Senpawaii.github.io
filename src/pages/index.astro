@@ -9,13 +9,14 @@ import poster from '../assets/inforum-poster.jpg';
 
 const title = `${profile.name} · ${profile.role}`;
 const description =
-  'Full-stack engineer in Lisbon who builds distributed systems and works with a crew of AI agents.';
+  'Software engineer in Lisbon working on distributed systems, automation and AI-assisted workflows.';
 const url = 'https://senpawaii.github.io/';
 const ld = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: profile.name,
   jobTitle: profile.role,
+  worksFor: { '@type': 'Organization', name: profile.employer },
   address: { '@type': 'PostalAddress', addressLocality: 'Lisbon', addressCountry: 'PT' },
   url,
   sameAs: [profile.linkedin, profile.github],
@@ -62,8 +63,8 @@ const tabs = [
           <Image src={portrait} alt="Portrait of João Queirós" width={160} height={160} class="portrait" loading="eager" />
           <div class="id-text">
             <h1>{profile.name}</h1>
-            <p class="id-role">{profile.role} · {profile.place}</p>
-            <p class="tagline">Distributed-systems engineer in Fintech, learning to run a crew of AI agents.</p>
+            <p class="id-role">{profile.role} at {profile.employer} · {profile.place}</p>
+            <p class="tagline">Distributed systems, automation and AI-assisted workflows, grounded in real production constraints.</p>
           </div>
           <nav class="social" aria-label="Profiles">
             <a href={profile.github} rel="me noopener" target="_blank">GitHub</a>
@@ -77,19 +78,23 @@ const tabs = [
         </div>
         <div class="panes">
         <section class="pane" role="tabpanel" id="pane-about" aria-labelledby="tab-about" data-pane="about" hidden>
+          <p class="lead">I like working on complex problems where distributed systems, automation and AI-assisted workflows meet real production constraints.</p>
           <div class="prose">
-              <p class="lead">I'm a full-stack engineer who likes building things and running the crew that builds them.</p>
-              <p>
-                I live in Lisbon and work on Fintech platforms at Accenture, mostly with Java, Spring Boot, Angular, Kafka
-                and Kubernetes. Before that I did an MSc in Computer Science at Instituto Superior Técnico, where I
-                specialised in distributed systems.
-              </p>
-              <p>
-                Outside the day job I like orchestration. I split a task into pieces, give each piece to the right worker
-                and check what comes back. Some of those workers are now AI agents, so I've been building tools that measure
-                whether an agent's skills help or only add cost.
-              </p>
-            </div>
+            <p>
+              What interests me most right now is how AI is becoming part of everyday engineering work. It is not only a
+              feature you plug in. It changes how we think about systems, how requirements take shape, and how information
+              becomes something operational. I also care about keeping these systems reliable, observable and easy to reason
+              about as they grow.
+            </p>
+            <p>
+              I gravitate toward orchestration, system integration and architecture at scale. I spend a lot of time on how
+              systems fit together, where they can fail, and how to keep them maintainable without over-engineering them.
+            </p>
+            <p>
+              Much of what I enjoy is taking messy, loosely defined processes and turning them into something structured and
+              understandable, without losing practicality along the way.
+            </p>
+          </div>
 
           <h3>What I do</h3>
           <ul class="cards two">
@@ -137,7 +142,7 @@ const tabs = [
           </ul>
         </section>
         <section class="pane" role="tabpanel" id="pane-projects" aria-labelledby="tab-projects" data-pane="projects" hidden>
-          <p class="lead">A selection of my public repos.</p>
+          <p class="lead">Some of my public repos, from side projects to research.</p>
           <ul class="cards three">
             {projects.map((p) => (
               <li class="card project">
@@ -163,8 +168,8 @@ const tabs = [
         <section class="pane" role="tabpanel" id="pane-contact" aria-labelledby="tab-contact" data-pane="contact" hidden>
           <p class="lead">Say hello.</p>
           <p>
-            I'm happy to talk about distributed systems, building with agents, or whatever you're working on. LinkedIn and
-            GitHub are the best places to find me. I'm in {profile.place}.
+            If you work on distributed systems, architecture, or how AI is changing the way we build software, I'm always
+            happy to connect and exchange ideas. LinkedIn is the best place to find me, and the code is on GitHub.
           </p>
           <div class="contact-links">
             <a class="big-link" href={profile.linkedin} target="_blank" rel="me noopener">
