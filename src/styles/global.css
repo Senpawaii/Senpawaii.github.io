@@ -167,7 +167,7 @@ a { color: inherit; }
 .social a:hover { background: var(--accent); transform: translateY(-1px); }
 .aside-note { margin: 10px 0 0; font-size: .78rem; color: var(--ink-2); font-style: italic; }
 
-.card { display: flex; flex-direction: column; max-height: calc(100dvh - 56px); min-height: 0; overflow: hidden; }
+.card { display: flex; flex-direction: column; height: min(780px, calc(100dvh - 56px)); min-height: 0; overflow: hidden; }
 .tabs { display: flex; gap: 4px; padding: 10px 14px 0; border-bottom: 1px solid var(--line); overflow-x: auto; flex: none; }
 .tabs button {
   all: unset; cursor: pointer; padding: 11px 16px 10px; font-weight: 700; font-size: .95rem; color: var(--ink-2);
@@ -232,11 +232,12 @@ a { color: inherit; }
   body { overflow: auto; }
   .page { height: auto; min-height: 100dvh; grid-template-columns: minmax(0, 1fr); padding: 14px; align-content: start; gap: 14px; }
   .rail { align-self: stretch; grid-template-columns: auto 1fr; column-gap: 16px; align-items: center; }
-  .rail > :not(.portrait):not(h1) { grid-column: 1 / -1; }
+  .rail > :not(.portrait):not(h1):not(.role) { grid-column: 1 / -1; }
+  .aside-note { display: none; }
   .portrait { grid-row: span 2; width: 84px; height: 84px; }
   .rail h1 { align-self: end; margin: 0; font-size: 1.45rem; }
   .role { align-self: start; }
-  .card { max-height: none; overflow: visible; }
+  .card { height: auto; max-height: none; overflow: visible; }
   .tabs { position: sticky; top: 0; z-index: 3; background: rgba(251,246,236,.96); border-radius: 22px 22px 0 0; }
   .panes { overflow: visible; padding: 22px 18px 26px; }
 }
