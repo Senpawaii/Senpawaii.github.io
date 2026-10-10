@@ -76,6 +76,7 @@ export const experience = [
     org: 'Pictet Tech',
     ctx: 'Banking technology',
     when: 'Dec 2023 to Present',
+    note: 'Started on this work as an Accenture consultant placed at Pictet, then was internalized by Pictet Tech.',
     roles: [
       {
         title: 'Software Engineer',
@@ -95,7 +96,7 @@ export const experience = [
   },
   {
     org: 'Accenture Portugal',
-    ctx: 'Fintech',
+    ctx: 'Consultant placed at Pictet',
     when: 'Nov 2023 to Nov 2025',
     roles: [
       {

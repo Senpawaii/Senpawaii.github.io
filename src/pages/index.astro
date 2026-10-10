@@ -106,6 +106,7 @@ const tabs = [
           {experience.map((e) => (
             <article class="job">
               <header><h4>{e.org} <span class="muted">· {e.ctx}</span></h4><span class="when">{e.when}</span></header>
+              {e.note && <p class="muted job-note">{e.note}</p>}
               {e.roles.map((r) => (
                 <div class="role">
                   <p class="role-title">{r.title} {r.when && <span class="when">{r.when}</span>}</p>
