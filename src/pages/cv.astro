@@ -52,6 +52,7 @@ const title = `${profile.name} · CV`;
               <div class="roleblock">
                 <div class="row"><h4>{r.title}</h4>{r.when && <span class="when">{r.when}</span>}</div>
                 <ul>{r.points.map((p) => <li>{p}</li>)}</ul>
+                {r.tech && <p class="tech"><b>Technologies:</b> {r.tech.join(', ')}</p>}
               </div>
             ))}
           </article>
@@ -116,6 +117,8 @@ const title = `${profile.name} · CV`;
   .note { color: var(--muted); font-style: italic; font-size: .9rem; }
   article { margin-bottom: 1rem; break-inside: avoid-page; }
   .roleblock { margin: .5rem 0 .6rem .8rem; }
+  .tech { margin-top: .35rem; color: var(--muted); font-size: .88rem; }
+  .tech b { color: var(--ink); }
   ul { margin: .3rem 0 0; padding-left: 1.15rem; }
   li { margin-bottom: .2rem; }
   .kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: .2rem 1.5rem; list-style: none; padding: 0; margin-top: .7rem; }
@@ -127,7 +130,10 @@ const title = `${profile.name} · CV`;
   @media (max-width: 640px) { .paper { padding: 28px 22px; } .kpis { grid-template-columns: 1fr; } .skills { grid-template-columns: 1fr; } .row { flex-direction: column; gap: 0; } }
   @media print {
     @page { size: A4; margin: 12mm 13mm 13mm; }
-    body { background: #fff; font-size: 9.1pt; line-height: 1.42; }
+    body { background: #fff; font-size: 8.8pt; line-height: 1.38; }
+    .tech { font-size: 8pt; margin-top: .2rem; }
+    .roleblock { margin: .35rem 0 .4rem .6rem; }
+    .skills { gap: .1rem .8rem; }
     h2 { margin: 1rem 0 .4rem; }
     li { margin-bottom: .1rem; }
     article { margin-bottom: .6rem; }

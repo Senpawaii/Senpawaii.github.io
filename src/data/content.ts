@@ -13,16 +13,15 @@ export const services = [
   ['Full-stack delivery', 'Spring Boot and Angular applications, from the first discussion to production.'],
   ['Event-driven and workflow systems', 'Kafka, IBM MQ and Temporal, built to stay reliable and easy to reason about as they grow.'],
   ['AI-powered automation', 'Using LLMs to turn unstructured documents into structured payloads for banking systems.'],
-  ['Technical leadership', 'Code review, mentoring, and shaping the backlog with product owners and stakeholders.'],
+  ['Leading projects', 'Leading delivery of a platform: code review, mentoring, and shaping the backlog with product owners and stakeholders.'],
 ] as const;
 
 export const stack: { group: string; items: string[] }[] = [
   { group: 'Languages and frameworks', items: ['Java 17/21', 'Spring Boot', 'Angular', 'TypeScript', 'RxJS', 'Python', 'C/C++'] },
-  { group: 'Messaging and orchestration', items: ['Apache Kafka', 'IBM MQ', 'Temporal', 'Event-driven architecture'] },
-  { group: 'Data', items: ['PostgreSQL', 'Oracle DB'] },
+  { group: 'Messaging, workflows and data', items: ['Apache Kafka', 'IBM MQ', 'Temporal', 'Event-driven architecture', 'PostgreSQL', 'Oracle DB'] },
   { group: 'Delivery and operations', items: ['Docker', 'Kubernetes', 'Helm', 'ArgoCD', 'GitHub Actions', 'AWS', 'GCP'] },
   { group: 'Observability, quality and security', items: ['Loki, Grafana, Tempo, Mimir', 'Jaeger', 'JUnit 5', 'Mockito', 'Testcontainers', 'PIT mutation testing', 'OAuth2', 'Spring Security'] },
-  { group: 'Architecture and leadership', items: ['Software architecture', 'Distributed systems', 'API design', 'Domain-driven design', 'Technical leadership', 'Mentoring', 'Code review'] },
+  { group: 'Architecture and collaboration', items: ['Software architecture', 'Distributed systems', 'API design', 'Domain-driven design', 'Mentoring', 'Code review', 'Backlog management', 'Stakeholder management'] },
   { group: 'AI in engineering', items: ['LLM-based document processing', 'Claude Code', 'Agent skills and evals'] },
 ];
 
@@ -81,13 +80,14 @@ export const experience = [
       {
         title: 'Software Engineer',
         when: '',
+        tech: ['Java', 'Spring Boot', 'Angular', 'Kafka', 'IBM MQ', 'Temporal', 'PostgreSQL', 'GitHub Actions', 'ArgoCD', 'Grafana', 'OAuth2', 'Spring Security'],
         points: [
           'Lead the development of an AI-powered automation platform that turns unstructured data into structured, contract-aligned payloads for internal banking systems.',
           'Designed and built a self-service solution that uses LLMs to process different document types through modular connectors, so extraction workflows are scalable and reusable.',
           'Own the platform end to end (architecture, design, implementation and delivery) and became its primary technical authority after the initial architecture handover.',
           'Architect event-driven, workflow-based systems with Kafka, IBM MQ and Temporal for resilience, scalability and reliable orchestration of complex processes.',
           'Automated manual, time-intensive operational processes, which cut processing overhead for internal teams.',
-          'Act as project lead in the team: review code, mentor engineers, and push for good practice in collaboration, quality and system design.',
+          'Lead the project within the team: review code, mentor engineers, and push for good practice in collaboration, quality and system design.',
           'Define and prioritise the backlog with Product Owners and Project Managers, and work directly with stakeholders and end users on discovery and feedback.',
           'Build and maintain CI/CD with GitHub Actions and ArgoCD, run observability and incident analysis on the LGTM stack, and enforce OAuth2 and Spring Security across services.',
         ],
@@ -102,6 +102,7 @@ export const experience = [
       {
         title: 'System Developer Analyst (Mid Full-Stack Engineer)',
         when: 'Apr 2025 to Nov 2025',
+        tech: ['Spring Boot', 'Angular 19', 'Oracle SQL', 'GitHub Actions', 'Bamboo', 'ArgoCD', 'Jaeger', 'PIT', 'OAuth 2'],
         points: [
           'Resolved long-standing application bottlenecks, improving throughput and latency by roughly 300%.',
           'Co-led the migration of legacy applications to Spring Boot and Angular 19.',
@@ -113,6 +114,7 @@ export const experience = [
       {
         title: 'App/Cloud Support Associate (Junior Full-Stack Engineer)',
         when: 'Nov 2023 to Apr 2025',
+        tech: ['Spring Boot', 'Java 17/21', 'Angular', 'JUnit', 'Docker', 'Kafka', 'AWS Kubernetes'],
         points: [
           'Co-led the work that unblocked a three-year Fintech integration project.',
           'Raised test coverage across several products from 20 to 30% to above 90%, and built the integration-test infrastructure for legacy systems.',
@@ -130,6 +132,7 @@ export const experience = [
       {
         title: 'Early Stage Researcher',
         when: '',
+        tech: ['ASP.NET', 'Software architecture'],
         points: [
           'Designed, built and evaluated µTCC, middleware that gives a microservices system data versions consistent with Transactional Causal Consistency.',
           'Eliminated consistency violations in over 95% of read operations, at a latency penalty of up to 25% that fewer aborts and re-executions largely offset.',
@@ -164,7 +167,7 @@ export const results = [
   { value: 'End to end', label: 'Owner of an AI-powered automation platform, from architecture to delivery', where: 'Pictet Tech' },
   { value: 'LLMs', label: 'Self-service document processing through modular, reusable connectors', where: 'Pictet Tech' },
   { value: 'Event-driven', label: 'Workflow orchestration on Kafka, IBM MQ and Temporal, built for resilience', where: 'Pictet Tech' },
-  { value: 'Tech lead', label: 'Code review, mentoring and backlog shaping with product owners', where: 'Pictet Tech' },
+  { value: 'Led the project', label: 'Code review, mentoring and backlog shaping with product owners', where: 'Pictet Tech' },
 ] as const;
 
 export const glance = [
