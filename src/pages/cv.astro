@@ -1,0 +1,140 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/fraunces';
+import { profile, experience, education, awards, stack, results, research } from '../data/content';
+
+const title = `${profile.name} · CV`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content="CV of João Queirós, Software Engineer at Pictet Tech in Lisbon." />
+    <link rel="canonical" href="https://senpawaii.github.io/cv/" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <div class="toolbar no-print">
+      <a href="/">← Back to the site</a>
+      <button type="button" onclick="window.print()">Print or save as PDF</button>
+    </div>
+
+    <main class="paper">
+      <header>
+        <h1>{profile.name}</h1>
+        <p class="role">{profile.role} at {profile.employer} · {profile.place}</p>
+        <p class="links">
+          <a href={profile.linkedin}>linkedin.com/in/joaomiguelqueiros</a> · <a href={profile.github}>github.com/Senpawaii</a>
+        </p>
+      </header>
+
+      <section>
+        <h2>Summary</h2>
+        <p>
+          I work on complex problems where distributed systems, automation and AI-assisted workflows meet real production
+          constraints. I gravitate toward orchestration, system integration and architecture at scale, and I like turning messy,
+          loosely defined processes into something structured and understandable without over-engineering it.
+        </p>
+        <ul class="kpis">
+          {results.map((r) => <li><b>{r.value}</b> {r.label}</li>)}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+        {experience.map((e) => (
+          <article>
+            <div class="row"><h3>{e.org} <span>· {e.ctx}</span></h3><span class="when">{e.when}</span></div>
+            {e.note && <p class="note">{e.note}</p>}
+            {e.roles.map((r) => (
+              <div class="roleblock">
+                <div class="row"><h4>{r.title}</h4>{r.when && <span class="when">{r.when}</span>}</div>
+                <ul>{r.points.map((p) => <li>{p}</li>)}</ul>
+              </div>
+            ))}
+          </article>
+        ))}
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        {education.map((e) => (
+          <article>
+            <div class="row"><h3>{e.degree}</h3><span class="when">{e.when}</span></div>
+            <p class="note">{e.school}</p>
+            <p>{e.note}</p>
+          </article>
+        ))}
+      </section>
+
+      <section>
+        <h2>Research and awards</h2>
+        <article>
+          <h3>{research.title}</h3>
+          <p class="note">{research.where}</p>
+          <p>{research.summary}</p>
+          <ul>{research.results.map((r) => <li>{r}</li>)}</ul>
+        </article>
+        <ul class="plain">
+          {awards.map((a) => <li><b>{a.title}</b>, {a.where}</li>)}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <dl class="skills">
+          {stack.map((g) => (<><dt>{g.group}</dt><dd>{g.items.join(', ')}</dd></>))}
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root { --ink: #1c1a17; --muted: #5b564d; --accent: #b4501a; --line: #ddd6c8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #e9e2d4; color: var(--ink); font-family: 'Inter Variable', system-ui, sans-serif; line-height: 1.5; font-size: 14px; -webkit-font-smoothing: antialiased; }
+  .toolbar { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 24px; background: rgba(255,252,246,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 5; }
+  .toolbar a { color: var(--ink); font-weight: 600; text-decoration: none; }
+  .toolbar button { font: inherit; font-weight: 700; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--ink); background: var(--ink); color: #fff; cursor: pointer; }
+  .toolbar button:hover { background: var(--accent); border-color: var(--accent); }
+  .paper { width: min(850px, calc(100% - 24px)); margin: 28px auto 60px; background: #fffdf8; padding: 56px 64px; box-shadow: 0 20px 60px rgba(28,26,23,.22); border-radius: 4px; }
+  h1 { font-family: 'Fraunces Variable', Georgia, serif; font-size: 2.4rem; font-weight: 650; letter-spacing: -.02em; margin: 0; line-height: 1.05; }
+  .role { margin: .4rem 0 0; font-weight: 600; color: var(--muted); }
+  .links { margin: .2rem 0 0; font-size: .9rem; }
+  .links a { color: var(--ink); }
+  header { padding-bottom: 1rem; border-bottom: 2px solid var(--ink); margin-bottom: 1.2rem; }
+  h2 { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 1.6rem 0 .6rem; padding-bottom: .3rem; border-bottom: 1px solid var(--line); }
+  h3 { font-size: 1.02rem; margin: 0; font-weight: 700; }
+  h3 span { color: var(--muted); font-weight: 500; }
+  h4 { font-size: .95rem; margin: 0; font-weight: 650; }
+  p { margin: .3rem 0; }
+  .row { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+  .when { color: var(--accent); font-weight: 700; font-size: .82rem; white-space: nowrap; }
+  .note { color: var(--muted); font-style: italic; font-size: .9rem; }
+  article { margin-bottom: 1rem; break-inside: avoid-page; }
+  .roleblock { margin: .5rem 0 .6rem .8rem; }
+  ul { margin: .3rem 0 0; padding-left: 1.15rem; }
+  li { margin-bottom: .2rem; }
+  .kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: .2rem 1.5rem; list-style: none; padding: 0; margin-top: .7rem; }
+  .kpis b { color: var(--accent); font-family: 'Fraunces Variable', Georgia, serif; font-size: 1.05rem; }
+  .plain { list-style: none; padding: 0; }
+  .skills { display: grid; grid-template-columns: 11rem 1fr; gap: .25rem 1rem; margin: 0; }
+  .skills dt { font-weight: 700; }
+  .skills dd { margin: 0; }
+  @media (max-width: 640px) { .paper { padding: 28px 22px; } .kpis { grid-template-columns: 1fr; } .skills { grid-template-columns: 1fr; } .row { flex-direction: column; gap: 0; } }
+  @media print {
+    @page { size: A4; margin: 12mm 13mm 13mm; }
+    body { background: #fff; font-size: 9.1pt; line-height: 1.42; }
+    h2 { margin: 1rem 0 .4rem; }
+    li { margin-bottom: .1rem; }
+    article { margin-bottom: .6rem; }
+    .no-print { display: none !important; }
+    .paper { width: auto; margin: 0; padding: 0; box-shadow: none; border-radius: 0; background: #fff; }
+    h1 { font-size: 21pt; }
+    header { padding-bottom: .6rem; margin-bottom: .8rem; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>

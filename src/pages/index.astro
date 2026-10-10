@@ -1,11 +1,14 @@
 ---
-import '@fontsource-variable/nunito';
-import { Image } from 'astro:assets';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/fraunces';
+import { Image, getImage } from 'astro:assets';
 import '../styles/global.css';
 import Backdrop from '../components/Backdrop.astro';
-import { profile, services, stack, projects, experience, education, awards } from '../data/content';
+import { profile, services, stack, projects, experience, education, awards, results, glance, research } from '../data/content';
 import portrait from '../assets/profile.jpeg';
 import poster from '../assets/inforum-poster.jpg';
+
+const posterFull = await getImage({ src: poster, width: 2400, format: 'webp' });
 
 const title = `${profile.name} · ${profile.role}`;
 const description =
@@ -27,6 +30,7 @@ const tabs = [
   ['experience', 'Experience'],
   ['projects', 'Projects'],
   ['stack', 'Stack'],
+  ['education', 'Education'],
   ['contact', 'Contact'],
 ] as const;
 ---
@@ -37,9 +41,10 @@ const tabs = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f6efe3" />
+    <meta name="theme-color" content="#f3ede2" />
     <link rel="canonical" href={url} />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -57,18 +62,18 @@ const tabs = [
     <Backdrop />
 
     <div class="page">
-
       <main class="card glass" id="content">
         <header class="id">
-          <Image src={portrait} alt="Portrait of João Queirós" width={160} height={160} class="portrait" loading="eager" />
+          <Image src={portrait} alt="Portrait of João Queirós" width={200} height={200} class="portrait" loading="eager" />
           <div class="id-text">
             <h1>{profile.name}</h1>
             <p class="id-role">{profile.role} at {profile.employer} · {profile.place}</p>
             <p class="tagline">Distributed systems, automation and AI-assisted workflows, grounded in real production constraints.</p>
           </div>
-          <nav class="social" aria-label="Profiles">
-            <a href={profile.github} rel="me noopener" target="_blank">GitHub</a>
-            <a href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+          <nav class="social" aria-label="Profiles and CV">
+            <a class="btn" href={profile.github} rel="me noopener" target="_blank">GitHub</a>
+            <a class="btn" href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+            <a class="btn ghost" href="/cv/">CV</a>
           </nav>
         </header>
         <div class="tabs" role="tablist" aria-label="Sections">
@@ -77,116 +82,163 @@ const tabs = [
           ))}
         </div>
         <div class="panes">
-        <section class="pane" role="tabpanel" id="pane-about" aria-labelledby="tab-about" data-pane="about" hidden>
-          <p class="lead">I like working on complex problems where distributed systems, automation and AI-assisted workflows meet real production constraints.</p>
-          <div class="prose">
-            <p>
-              What interests me most right now is how AI is becoming part of everyday engineering work. It is not only a
-              feature you plug in. It changes how we think about systems, how requirements take shape, and how information
-              becomes something operational. I also care about keeping these systems reliable, observable and easy to reason
-              about as they grow.
-            </p>
-            <p>
-              I gravitate toward orchestration, system integration and architecture at scale. I spend a lot of time on how
-              systems fit together, where they can fail, and how to keep them maintainable without over-engineering them.
-            </p>
-            <p>
-              Much of what I enjoy is taking messy, loosely defined processes and turning them into something structured and
-              understandable, without losing practicality along the way.
-            </p>
-          </div>
 
-          <h3>What I do</h3>
-          <ul class="cards two">
-            {services.map(([t, d]) => (<li class="card"><strong>{t}</strong><p>{d}</p></li>))}
-          </ul>
-        </section>
-        <section class="pane" role="tabpanel" id="pane-experience" aria-labelledby="tab-experience" data-pane="experience" hidden>
-          <h3>Experience</h3>
-          {experience.map((e) => (
-            <article class="job">
-              <header><h4>{e.org} <span class="muted">· {e.ctx}</span></h4><span class="when">{e.when}</span></header>
-              {e.note && <p class="muted job-note">{e.note}</p>}
-              {e.roles.map((r) => (
-                <div class="role">
-                  <p class="role-title">{r.title} {r.when && <span class="when">{r.when}</span>}</p>
-                  <ul>{r.points.map((p) => <li>{p}</li>)}</ul>
+          <section class="pane" role="tabpanel" id="pane-about" aria-labelledby="tab-about" data-pane="about" hidden>
+            <p class="lead">I like working on complex problems where distributed systems, automation and AI-assisted workflows meet real production constraints.</p>
+
+            <ul class="results" aria-label="Selected results">
+              {results.map((r) => (
+                <li>
+                  <b>{r.value}</b>
+                  <span>{r.label}</span>
+                  <small>{r.where}</small>
+                </li>
+              ))}
+            </ul>
+
+            <div class="about-grid">
+              <div class="prose">
+                <p>
+                  What interests me most right now is how AI is becoming part of everyday engineering work. It is not only a
+                  feature you plug in. It changes how we think about systems, how requirements take shape, and how information
+                  becomes something operational. I also care about keeping these systems reliable, observable and easy to reason
+                  about as they grow.
+                </p>
+                <p>
+                  I gravitate toward orchestration, system integration and architecture at scale. I spend a lot of time on how
+                  systems fit together, where they can fail, and how to keep them maintainable without over-engineering them.
+                </p>
+                <p>
+                  Much of what I enjoy is taking messy, loosely defined processes and turning them into something structured and
+                  understandable, without losing practicality along the way.
+                </p>
+              </div>
+              <aside class="glance" aria-label="At a glance">
+                <h3>At a glance</h3>
+                <dl>
+                  {glance.map(([k, v]) => (<><dt>{k}</dt><dd>{v}</dd></>))}
+                </dl>
+              </aside>
+            </div>
+
+            <h3>What I do</h3>
+            <ul class="cards four">
+              {services.map(([t, d]) => (<li class="card"><strong>{t}</strong><p>{d}</p></li>))}
+            </ul>
+          </section>
+
+          <section class="pane" role="tabpanel" id="pane-experience" aria-labelledby="tab-experience" data-pane="experience" hidden>
+            <p class="lead">Three years building systems for banking and fintech, after a research internship.</p>
+            <ol class="timeline">
+              {experience.map((e) => (
+                <li class="job">
+                  <header><h4>{e.org} <span class="muted">· {e.ctx}</span></h4><span class="when">{e.when}</span></header>
+                  {e.note && <p class="muted job-note">{e.note}</p>}
+                  {e.roles.map((r) => (
+                    <div class="role">
+                      <p class="role-title">{r.title} {r.when && <span class="when">{r.when}</span>}</p>
+                      <ul>{r.points.map((p) => <li>{p}</li>)}</ul>
+                    </div>
+                  ))}
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section class="pane" role="tabpanel" id="pane-projects" aria-labelledby="tab-projects" data-pane="projects" hidden>
+            <p class="lead">Some of my public repos, from side projects to research.</p>
+            <ul class="cards three">
+              {projects.map((p) => (
+                <li class="card project">
+                  <span class="tag">{p.tag}</span>
+                  <h3><a href={p.url} target="_blank" rel="noopener">{p.name} <span aria-hidden="true">↗</span></a></h3>
+                  <p>{p.text}</p>
+                  <ul class="chips small">{p.tech.map((t) => <li>{t}</li>)}</ul>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section class="pane" role="tabpanel" id="pane-stack" aria-labelledby="tab-stack" data-pane="stack" hidden>
+            <p class="lead">The tools I use most.</p>
+            <div class="stack-grid">
+              {stack.map((g) => (
+                <div class="card">
+                  <h3>{g.group}</h3>
+                  <ul class="chips">{g.items.map((i) => <li>{i}</li>)}</ul>
                 </div>
               ))}
-            </article>
-          ))}
+            </div>
+          </section>
 
-          <h3>Education</h3>
-          {education.map((e) => (
-            <article class="job">
-              <header><h4>{e.degree}</h4><span class="when">{e.when}</span></header>
-              <p class="muted">{e.school}</p>
-              <p>{e.note}</p>
-            </article>
-          ))}
+          <section class="pane" role="tabpanel" id="pane-education" aria-labelledby="tab-education" data-pane="education" hidden>
+            <p class="lead">Distributed systems at Instituto Superior Técnico, and the research that came out of it.</p>
 
-          <h3>Awards</h3>
-          <ul class="cards three">
-            {awards.map((a) => (
-              <li class="card">
-                <span class="tag">{a.where}</span>
-                <h4>{a.title}</h4>
-                <p>{a.text}</p>
-                {a.poster && (
-                  <details class="poster">
-                    <summary>View the certificate</summary>
-                    <Image src={poster} alt="Best Student Poster certificate, INForum 2023" width={900} loading="lazy" />
-                  </details>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
-        <section class="pane" role="tabpanel" id="pane-projects" aria-labelledby="tab-projects" data-pane="projects" hidden>
-          <p class="lead">Some of my public repos, from side projects to research.</p>
-          <ul class="cards three">
-            {projects.map((p) => (
-              <li class="card project">
-                <span class="tag">{p.tag}</span>
-                <h3><a href={p.url} target="_blank" rel="noopener">{p.name} <span aria-hidden="true">↗</span></a></h3>
-                <p>{p.text}</p>
-                <ul class="chips small">{p.tech.map((t) => <li>{t}</li>)}</ul>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <section class="pane" role="tabpanel" id="pane-stack" aria-labelledby="tab-stack" data-pane="stack" hidden>
-          <p class="lead">The tools I use most.</p>
-          <div class="stack-grid">
-            {stack.map((g) => (
-              <div class="card">
-                <h3>{g.group}</h3>
-                <ul class="chips">{g.items.map((i) => <li>{i}</li>)}</ul>
+            <article class="research">
+              <a class="poster-link" href={posterFull.src} target="_blank" rel="noopener" aria-label="Open the full INForum 2023 poster">
+                <Image src={poster} alt="INForum 2023 poster on Transactional Causal Consistency for microservices" width={560} loading="lazy" />
+                <span>Open the full poster ↗</span>
+              </a>
+              <div class="research-text">
+                <span class="tag">{research.where}</span>
+                <h3>{research.title}</h3>
+                <p>{research.summary}</p>
+                <ul class="check">
+                  {research.results.map((r) => <li>{r}</li>)}
+                </ul>
+                <p class="muted small">Poster title: <em>{research.poster}</em></p>
               </div>
-            ))}
-          </div>
-        </section>
-        <section class="pane" role="tabpanel" id="pane-contact" aria-labelledby="tab-contact" data-pane="contact" hidden>
-          <p class="lead">Say hello.</p>
-          <p>
-            If you work on distributed systems, architecture, or how AI is changing the way we build software, I'm always
-            happy to connect and exchange ideas. LinkedIn is the best place to find me, and the code is on GitHub.
-          </p>
-          <div class="contact-links">
-            <a class="big-link" href={profile.linkedin} target="_blank" rel="me noopener">
-              <strong>LinkedIn</strong><span>Message me</span>
-            </a>
-            <a class="big-link" href={profile.github} target="_blank" rel="me noopener">
-              <strong>GitHub</strong><span>See the code</span>
-            </a>
-          </div>
-        </section>
+            </article>
+
+            <h3>Degrees</h3>
+            <ul class="cards two">
+              {education.map((e) => (
+                <li class="card">
+                  <span class="tag">{e.when}</span>
+                  <h4>{e.degree}</h4>
+                  <p class="muted">{e.school}</p>
+                  <p>{e.note}</p>
+                </li>
+              ))}
+            </ul>
+
+            <h3>Awards</h3>
+            <ul class="cards three">
+              {awards.map((a) => (
+                <li class="card">
+                  <span class="tag">{a.where}</span>
+                  <h4>{a.title}</h4>
+                  <p>{a.text}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section class="pane" role="tabpanel" id="pane-contact" aria-labelledby="tab-contact" data-pane="contact" hidden>
+            <p class="lead">Say hello.</p>
+            <p>
+              If you work on distributed systems, architecture, or how AI is changing the way we build software, I'm always
+              happy to connect and exchange ideas. LinkedIn is the best place to find me, and the code is on GitHub.
+            </p>
+            <div class="contact-links">
+              <a class="big-link" href={profile.linkedin} target="_blank" rel="me noopener">
+                <strong>LinkedIn</strong><span>Message me</span>
+              </a>
+              <a class="big-link" href={profile.github} target="_blank" rel="me noopener">
+                <strong>GitHub</strong><span>See the code</span>
+              </a>
+              <a class="big-link" href="/cv/">
+                <strong>CV</strong><span>Printable one-page summary</span>
+              </a>
+            </div>
+          </section>
+
         </div>
       </main>
     </div>
 
     <script>
-      const ids = ['about', 'experience', 'projects', 'stack', 'contact'];
+      const ids = ['about', 'experience', 'projects', 'stack', 'education', 'contact'];
       const tabs = [...document.querySelectorAll('[role=tab]')];
       const panes = [...document.querySelectorAll('[data-pane]')];
       const holder = document.querySelector('.panes');
