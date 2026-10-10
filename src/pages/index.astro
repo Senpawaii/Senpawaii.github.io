@@ -4,7 +4,7 @@ import '@fontsource-variable/fraunces';
 import { Image, getImage } from 'astro:assets';
 import '../styles/global.css';
 import Backdrop from '../components/Backdrop.astro';
-import { profile, services, stack, projects, experience, education, awards, results, glance, research } from '../data/content';
+import { profile, services, stack, projects, experience, education, awards, results, glance, research, recognition } from '../data/content';
 import portrait from '../assets/profile.jpeg';
 import poster from '../assets/inforum-poster.jpg';
 
@@ -92,6 +92,16 @@ const tabs = [
                   <b>{r.value}</b>
                   <span>{r.label}</span>
                   <small>{r.where}</small>
+                </li>
+              ))}
+            </ul>
+
+            <ul class="badges" aria-label="Recognition">
+              {recognition.map((r) => (
+                <li>
+                  <span class="badge-label">{r.label}</span>
+                  <strong>{r.title}</strong>
+                  {r.text && <p>{r.text}</p>}
                 </li>
               ))}
             </ul>
@@ -204,7 +214,7 @@ const tabs = [
             </ul>
 
             <h3>Awards</h3>
-            <ul class="cards three">
+            <ul class="cards two">
               {awards.map((a) => (
                 <li class="card">
                   <span class="tag">{a.where}</span>
