@@ -11,6 +11,14 @@ import Backdrop from '../components/Backdrop.astro';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page not found · João Queirós</title>
     <meta name="robots" content="noindex" />
+    <script is:inline>
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
     <link rel="icon" href="/favicon.ico?v=2" sizes="48x48" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=2" />
