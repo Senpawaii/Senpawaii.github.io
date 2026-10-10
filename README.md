@@ -14,5 +14,5 @@ npm run build    # outputs to dist/
 
 ## Deploy
 
-`.github/workflows/deploy.yml` builds and publishes to GitHub Pages on every push to `main`.
+`.github/workflows/deploy.yml` builds and publishes to GitHub Pages on every push to `master`.
 In the repo settings, set **Pages → Source** to **GitHub Actions** once.
