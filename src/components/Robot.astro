@@ -1,0 +1,41 @@
+---
+interface Props {
+  color?: string;
+  tool?: 'clipboard' | 'wrench' | 'lens' | 'flag' | 'none';
+  label?: string;
+  delay?: number;
+  class?: string;
+}
+const { color = '#e8742c', tool = 'none', label, delay = 0, class: cls = '' } = Astro.props;
+const tools = {
+  clipboard: '<rect x="56" y="48" width="14" height="18" rx="2" fill="#fff8e8" stroke="#2b2a28" stroke-width="2"/><path d="M59 54h8M59 59h8" stroke="#2b2a28" stroke-width="1.6" stroke-linecap="round"/>',
+  wrench: '<path d="M60 66l8-14" stroke="#5d6b78" stroke-width="4" stroke-linecap="round"/><circle cx="69" cy="50" r="5" fill="none" stroke="#5d6b78" stroke-width="3"/>',
+  lens: '<circle cx="64" cy="55" r="7" fill="#dff3f0" stroke="#2b2a28" stroke-width="2.4"/><path d="M69 61l6 7" stroke="#2b2a28" stroke-width="3" stroke-linecap="round"/>',
+  flag: '<path d="M62 68V46" stroke="#2b2a28" stroke-width="2.4" stroke-linecap="round"/><path d="M62 46h12l-3 5 3 5H62z" fill="#d9534f" stroke="#2b2a28" stroke-width="1.6" stroke-linejoin="round"/>',
+  none: '',
+};
+---
+<span class:list={['robot', cls]} style={`--c:${color};--d:${delay}s`} data-label={label} aria-hidden="true">
+  <svg viewBox="0 0 90 108" width="100%" height="100%">
+    <ellipse class="shadow" cx="45" cy="104" rx="22" ry="4" fill="#2b2a28" opacity=".14" />
+    <g class="body-bob">
+      <line x1="45" y1="8" x2="45" y2="19" stroke="#2b2a28" stroke-width="3" stroke-linecap="round" />
+      <circle class="bulb" cx="45" cy="6" r="5" fill="#f5b82e" stroke="#2b2a28" stroke-width="2.4" />
+      <rect x="18" y="18" width="54" height="36" rx="14" fill="var(--c)" stroke="#2b2a28" stroke-width="3" />
+      <rect x="25" y="25" width="40" height="22" rx="9" fill="#fff8e8" />
+      <g class="eyes">
+        <circle cx="37" cy="35" r="4.2" fill="#2b2a28" />
+        <circle cx="53" cy="35" r="4.2" fill="#2b2a28" />
+      </g>
+      <path d="M40 42q5 4 10 0" fill="none" stroke="#2b2a28" stroke-width="2.4" stroke-linecap="round" />
+      <circle cx="30" cy="42" r="2.6" fill="#f08a7a" opacity=".7" /><circle cx="60" cy="42" r="2.6" fill="#f08a7a" opacity=".7" />
+      <rect x="24" y="58" width="42" height="32" rx="12" fill="var(--c)" stroke="#2b2a28" stroke-width="3" />
+      <rect x="24" y="58" width="42" height="32" rx="12" fill="#fff" opacity=".18" />
+      <circle class="chest" cx="45" cy="74" r="5.5" fill="#fff8e8" stroke="#2b2a28" stroke-width="2.2" />
+      <g class="arm-l"><path d="M25 64q-9 6-8 16" fill="none" stroke="#2b2a28" stroke-width="5" stroke-linecap="round" /></g>
+      <g class="arm-r"><path d="M65 64q8 2 8 -8" fill="none" stroke="#2b2a28" stroke-width="5" stroke-linecap="round" /><g set:html={tools[tool]} /></g>
+      <rect x="29" y="90" width="12" height="10" rx="4" fill="#5d6b78" stroke="#2b2a28" stroke-width="2.6" />
+      <rect x="49" y="90" width="12" height="10" rx="4" fill="#5d6b78" stroke="#2b2a28" stroke-width="2.6" />
+    </g>
+  </svg>
+</span>

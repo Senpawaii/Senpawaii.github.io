@@ -1,0 +1,238 @@
+---
+import '@fontsource-variable/nunito';
+import { Image } from 'astro:assets';
+import '../styles/global.css';
+import Floor from '../components/Floor.astro';
+import Robot from '../components/Robot.astro';
+import { profile, stations, crew, services, stack, projects, experience, education, awards } from '../data/content';
+import portrait from '../assets/profile.jpeg';
+import poster from '../assets/inforum-poster.jpg';
+
+const title = `${profile.name} · ${profile.role}`;
+const description =
+  'Full-stack engineer in Lisbon who builds distributed systems and directs a crew of AI agents. Explore the factory floor.';
+const url = 'https://senpawaii.github.io/';
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  jobTitle: profile.role,
+  address: { '@type': 'PostalAddress', addressLocality: 'Lisbon', addressCountry: 'PT' },
+  url,
+  sameAs: [profile.linkedin, profile.github],
+  alumniOf: 'Instituto Superior Técnico, University of Lisbon',
+};
+const stationName = Object.fromEntries(stations.map((s) => [s.id, s]));
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6efe3" />
+    <link rel="canonical" href={url} />
+    <link rel="icon" href="/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  </head>
+  <body>
+    <a class="skip" href="#panel-launch">Skip to the station list</a>
+    <header class="bar">
+      <div class="who">
+        <h1>{profile.name}</h1>
+        <p>{profile.role} · {profile.place}</p>
+      </div>
+      <p class="tagline">I build things, and the crews that build them.</p>
+      <nav class="social" aria-label="Profiles">
+        <a href={profile.github} rel="me noopener" target="_blank">GitHub</a>
+        <a href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2 class="sr-only" id="panel-launch">The factory floor: choose a station</h2>
+      <Floor />
+    </main>
+
+    <dialog id="panel" aria-labelledby="panel-title">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow" id="panel-eyebrow"></p>
+          <h2 id="panel-title"></h2>
+        </div>
+        <button type="button" class="close" data-close aria-label="Close panel">×</button>
+      </div>
+
+      <div class="panel-body">
+        <!-- ABOUT -->
+        <section data-panel="about" hidden>
+          <div class="about-top">
+            <Image src={portrait} alt="Portrait of João Queirós" width={220} height={220} class="portrait" loading="lazy" />
+            <div class="prose">
+              <p class="lead">Engineer first, with AI as a multiplier.</p>
+              <p>
+                I’m a full-stack engineer based in Lisbon with an MSc in Computer Science from Instituto Superior Técnico,
+                where I specialised in distributed systems. Since 2023 I’ve been building and modernising Fintech platforms at
+                Accenture with Java, Spring Boot, Angular, Kafka and Kubernetes.
+              </p>
+              <p>
+                What I enjoy most is orchestration: breaking work into pieces, putting the right worker on each one, and
+                checking the result. Lately that crew includes AI agents. I’m building tools to measure whether an agent’s
+                skills actually help, because a crew is only useful if you can trust what it hands back.
+              </p>
+            </div>
+          </div>
+
+          <h3>The crew</h3>
+          <ul class="crew-list">
+            {crew.map((c) => (
+              <li>
+                <span class="crew-bot"><Robot color={c.color} tool={c.tool} /></span>
+                <div><strong>{c.name}</strong><p>{c.job}</p></div>
+              </li>
+            ))}
+          </ul>
+
+          <h3>What I do</h3>
+          <ul class="cards two">
+            {services.map(([t, d]) => (<li class="card"><strong>{t}</strong><p>{d}</p></li>))}
+          </ul>
+        </section>
+
+        <!-- STACK -->
+        <section data-panel="stack" hidden>
+          <p class="lead">The machines I work with every day.</p>
+          <div class="stack-grid">
+            {stack.map((g) => (
+              <div class="card">
+                <h3>{g.group}</h3>
+                <ul class="chips">{g.items.map((i) => <li>{i}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section data-panel="projects" hidden>
+          <p class="lead">Things I’ve shipped, tinkered with, or researched. All public.</p>
+          <ul class="cards three">
+            {projects.map((p) => (
+              <li class="card project">
+                <span class="tag">{p.tag}</span>
+                <h3><a href={p.url} target="_blank" rel="noopener">{p.name} <span aria-hidden="true">↗</span></a></h3>
+                <p>{p.text}</p>
+                <ul class="chips small">{p.tech.map((t) => <li>{t}</li>)}</ul>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- RESUME -->
+        <section data-panel="resume" hidden>
+          <h3>Experience</h3>
+          {experience.map((e) => (
+            <article class="job">
+              <header><h4>{e.org} <span class="muted">· {e.ctx}</span></h4><span class="when">{e.when}</span></header>
+              {e.roles.map((r) => (
+                <div class="role">
+                  <p class="role-title">{r.title} {r.when && <span class="when">{r.when}</span>}</p>
+                  <ul>{r.points.map((p) => <li>{p}</li>)}</ul>
+                </div>
+              ))}
+            </article>
+          ))}
+
+          <h3>Education</h3>
+          {education.map((e) => (
+            <article class="job">
+              <header><h4>{e.degree}</h4><span class="when">{e.when}</span></header>
+              <p class="muted">{e.school}</p>
+              <p>{e.note}</p>
+            </article>
+          ))}
+
+          <h3>Awards</h3>
+          <ul class="cards three">
+            {awards.map((a) => (
+              <li class="card">
+                <span class="tag">{a.where}</span>
+                <h4>{a.title}</h4>
+                <p>{a.text}</p>
+                {a.poster && (
+                  <details class="poster">
+                    <summary>View the certificate</summary>
+                    <Image src={poster} alt="Best Student Poster certificate, INForum 2023" width={900} loading="lazy" />
+                  </details>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- CONTACT -->
+        <section data-panel="contact" hidden>
+          <p class="lead">The dispatch desk is open.</p>
+          <p>
+            If you’d like to talk about distributed systems, building with agents, or something you’re working on, the best
+            places to find me are below. I’m based in {profile.place}.
+          </p>
+          <div class="contact-links">
+            <a class="big-link" href={profile.linkedin} target="_blank" rel="me noopener">
+              <strong>LinkedIn</strong><span>Message me</span>
+            </a>
+            <a class="big-link" href={profile.github} target="_blank" rel="me noopener">
+              <strong>GitHub</strong><span>See the code</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </dialog>
+
+    <script define:vars={{ names: stationName }}>
+      const dlg = document.getElementById('panel');
+      const title = document.getElementById('panel-title');
+      const eyebrow = document.getElementById('panel-eyebrow');
+      const sections = [...dlg.querySelectorAll('[data-panel]')];
+      const body = dlg.querySelector('.panel-body');
+
+      function show(id) {
+        const s = names[id];
+        if (!s) return false;
+        title.textContent = s.label;
+        eyebrow.textContent = s.sub;
+        sections.forEach((el) => (el.hidden = el.dataset.panel !== id));
+        body.scrollTop = 0;
+        if (!dlg.open) dlg.showModal();
+        return true;
+      }
+      function sync() {
+        const id = location.hash.slice(1);
+        if (!show(id) && dlg.open) dlg.close();
+      }
+      document.querySelectorAll('[data-station]').forEach((b) =>
+        b.addEventListener('click', () => {
+          history.pushState(null, '', '#' + b.dataset.station);
+          show(b.dataset.station);
+        })
+      );
+      dlg.querySelector('[data-close]').addEventListener('click', () => dlg.close());
+      dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener('close', () => {
+        if (location.hash) history.pushState(null, '', location.pathname + location.search);
+      });
+      addEventListener('popstate', sync);
+      addEventListener('keydown', (e) => {
+        if (e.metaKey || e.ctrlKey || e.altKey || dlg.open) return;
+        const s = Object.keys(names).find((k) => names[k].key === e.key);
+        if (s) { history.pushState(null, '', '#' + s); show(s); }
+      });
+      sync();
+    </script>
+  </body>
+</html>
