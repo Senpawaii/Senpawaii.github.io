@@ -13,6 +13,7 @@
   color-scheme: light;
 }
 * { box-sizing: border-box; }
+html { font-size: clamp(15px, 0.42vw + 10.2px, 22px); }
 html, body { height: 100%; margin: 0; }
 body {
   font-family: 'Nunito Variable', ui-rounded, system-ui, sans-serif;
@@ -146,13 +147,13 @@ a { color: inherit; }
 
 
 /* ---------- the page ---------- */
-.page { position: relative; z-index: 1; height: 100dvh; padding: 18px; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; }
+.page { position: relative; z-index: 1; height: 100dvh; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; }
 .glass {
   background: rgba(251, 246, 236, .94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(43, 42, 40, .14); border-radius: 22px; box-shadow: 0 24px 70px rgba(43, 42, 40, .18);
 }
-.id { display: flex; align-items: center; gap: 22px; padding: 28px 40px 20px; flex: none; }
-.portrait { width: 92px; height: 92px; flex: none; object-fit: cover; border-radius: 50%; border: 1px solid var(--line); box-shadow: 0 4px 14px rgba(43,42,40,.16); }
+.id { display: flex; align-items: center; gap: 1.4rem; padding: 1.75rem 2.5rem 1.25rem; flex: none; }
+.portrait { width: 5.75rem; height: 5.75rem; flex: none; object-fit: cover; border-radius: 50%; border: 1px solid var(--line); box-shadow: 0 4px 14px rgba(43,42,40,.16); }
 .id-text { min-width: 0; }
 .id h1 { margin: 0; font-size: 2rem; line-height: 1.1; letter-spacing: -.01em; }
 .id-role { margin: 3px 0 0; color: var(--ink-2); font-weight: 600; font-size: 1rem; }
@@ -161,16 +162,16 @@ a { color: inherit; }
 .social a { text-decoration: none; font-weight: 800; font-size: .88rem; padding: 7px 15px; border-radius: 999px; background: var(--ink); color: #fff; transition: transform .12s, background .12s; }
 .social a:hover { background: var(--accent); transform: translateY(-1px); }
 
-.card { display: flex; flex-direction: column; width: min(1240px, 100%); height: min(980px, calc(100dvh - 36px)); min-height: 0; overflow: hidden; }
-.tabs { display: flex; gap: 4px; padding: 0 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow-x: auto; flex: none; }
+.card { display: flex; flex-direction: column; width: 94%; height: 94%; min-height: 0; overflow: hidden; }
+.tabs { display: flex; gap: 4px; padding: 0 2rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow-x: auto; flex: none; }
 .tabs button {
-  all: unset; cursor: pointer; padding: 14px 20px 13px; font-weight: 700; font-size: 1.02rem; color: var(--ink-2);
+  all: unset; cursor: pointer; padding: .9rem 1.25rem .8rem; font-weight: 700; font-size: 1.02rem; color: var(--ink-2);
   border-bottom: 3px solid transparent; margin-bottom: -1px; white-space: nowrap; transition: color .12s;
 }
 .tabs button:hover { color: var(--ink); }
 .tabs button[aria-selected=true] { color: var(--ink); font-weight: 800; border-bottom-color: var(--yellow); }
 .tabs button:focus-visible { outline: 3px solid var(--orange); border-radius: 8px; }
-.panes { overflow-y: auto; font-size: 1.06rem; padding: 34px 44px 40px;  min-height: 0; flex: 1; overscroll-behavior: contain; }
+.panes { overflow-y: auto; font-size: 1.06rem; padding: 2.1rem 2.75rem 2.5rem;  min-height: 0; flex: 1; overscroll-behavior: contain; }
 
 /* ---------- content ---------- */
 .panes h3 { font-size: .8rem; margin: 30px 0 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-2); }
@@ -219,8 +220,9 @@ a { color: inherit; }
 /* ---------- small screens ---------- */
 @media (max-width: 760px) {
   body { overflow: auto; }
+  html { font-size: 16px; }
   .page { height: auto; min-height: 100dvh; padding: 12px; place-items: start center; }
-  .card { height: auto; max-height: none; overflow: visible; }
+  .card { width: 100%; height: auto; max-height: none; overflow: visible; }
   .id { flex-wrap: wrap; padding: 18px 18px 12px; gap: 12px 14px; }
   .portrait { width: 64px; height: 64px; }
   .id h1 { font-size: 1.4rem; }
