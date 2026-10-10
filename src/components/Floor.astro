@@ -1,0 +1,57 @@
+---
+import Chibi from './Chibi.astro';
+import Station from './Station.astro';
+import { stations } from '../data/content';
+const colors: Record<string, string> = { about: '#e8742c', stack: '#4c8bd1', resume: '#9b6bd1', contact: '#d9534f', projects: '#2f8f83' };
+const s = Object.fromEntries(stations.map((x) => [x.id, x]));
+const st = (id: string) => ({ id: id as any, label: s[id].label, sub: s[id].sub, k: s[id].key, color: colors[id] });
+---
+<div class="floor">
+  <svg class="floor-art" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <pattern id="tiles" width="80" height="80" patternUnits="userSpaceOnUse">
+        <rect width="80" height="80" fill="#efe5d1" /><path d="M80 0H0V80" fill="none" stroke="#e1d4ba" stroke-width="3" />
+      </pattern>
+      <pattern id="hazard" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="40" height="40" fill="#f5b82e" /><rect width="20" height="40" fill="#2b2a28" />
+      </pattern>
+    </defs>
+    <rect width="1600" height="900" fill="url(#tiles)" />
+    <rect width="1600" height="70" fill="#d9ccb2" />
+    <rect y="62" width="1600" height="12" fill="url(#hazard)" opacity=".85" />
+    <path d="M60 480H1400" stroke="#2b2a28" stroke-width="2" opacity="0" />
+    <!-- belt -->
+    <rect x="0" y="452" width="1330" height="86" rx="10" fill="#5d6b78" stroke="#2b2a28" stroke-width="5" />
+    <rect x="0" y="466" width="1330" height="58" fill="#3f4a54" />
+    <rect class="belt-lines" x="0" y="466" width="1330" height="58" fill="url(#beltstripes)" />
+    <pattern id="beltstripes" width="44" height="58" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="6" height="58" fill="#fff" opacity=".13" /></pattern>
+    <g stroke="#2b2a28" stroke-width="5" fill="#5d6b78">
+      <circle cx="40" cy="495" r="26" /><circle cx="1290" cy="495" r="26" />
+    </g>
+    <g class="cogs" fill="none" stroke="#fff8e8" stroke-width="4" stroke-linecap="round" opacity=".8">
+      <path d="M40 481v28M26 495h28" /><path d="M1290 481v28M1276 495h28" />
+    </g>
+    <!-- chute into the dock -->
+    <path d="M1316 520l110 80v110H1230V600z" fill="#5d6b78" stroke="#2b2a28" stroke-width="5" stroke-linejoin="round" />
+    <!-- floor strips -->
+    <rect x="0" y="838" width="1600" height="62" fill="#d9ccb2" /><rect y="838" width="1600" height="10" fill="url(#hazard)" opacity=".85" />
+  </svg>
+
+  <div class="slot slot-about"><Station {...st('about')} /></div>
+  <div class="slot slot-stack"><Station {...st('stack')} /></div>
+  <div class="slot slot-resume"><Station {...st('resume')} /></div>
+  <div class="slot slot-contact"><Station {...st('contact')} /></div>
+  <div class="slot slot-projects"><Station {...st('projects')} /></div>
+
+  <div class="crates" aria-hidden="true">
+    {[0, 1, 2, 3, 4].map((i) => <span class="crate" style={`--i:${i}`}><i></i></span>)}
+  </div>
+
+  <Chibi class="r-planner" kind="plip" tool="clipboard" label="Plip · Planner" delay={0} />
+  <Chibi class="r-builder" kind="sparko" tool="wrench" label="Sparko · Builder" delay={0.6} />
+  <Chibi class="r-reviewer" kind="sprig" tool="lens" label="Sprig · Reviewer" delay={1.1} />
+  <Chibi class="r-tester" kind="wisp" tool="flag" label="Wisp · Tester" delay={1.6} />
+  <Chibi class="r-patrol" kind="hardy" label="Hardy · Foreman" delay={0.3} />
+
+  <p class="hint" aria-hidden="true">Click a station, or press 1 to 5</p>
+</div>

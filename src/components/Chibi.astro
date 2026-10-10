@@ -1,0 +1,94 @@
+---
+type Kind = 'plip' | 'sparko' | 'sprig' | 'wisp' | 'hardy';
+interface Props {
+  kind: Kind;
+  tool?: 'clipboard' | 'wrench' | 'lens' | 'flag' | 'none';
+  label?: string;
+  delay?: number;
+  class?: string;
+}
+const { kind, tool = 'none', label, delay = 0, class: cls = '' } = Astro.props;
+
+const K = '#2b2a28';
+const eyes = (y = 58) =>
+  `<g class="eyes">${[38, 62]
+    .map(
+      (x) =>
+        `<ellipse cx="${x}" cy="${y}" rx="6.2" ry="7.6" fill="${K}"/><circle cx="${x + 2}" cy="${y - 2.8}" r="2.5" fill="#fff"/><circle cx="${x - 1.8}" cy="${y + 2.4}" r="1.1" fill="#fff"/>`
+    )
+    .join('')}</g>`;
+const blush = (y = 67) =>
+  `<ellipse cx="29" cy="${y}" rx="4.6" ry="3" fill="#f48a8a" opacity=".65"/><ellipse cx="71" cy="${y}" rx="4.6" ry="3" fill="#f48a8a" opacity=".65"/>`;
+const smile = (y = 68) => `<path d="M45 ${y}q5 4.5 10 0" fill="none" stroke="${K}" stroke-width="2.2" stroke-linecap="round"/>`;
+
+const tools = {
+  clipboard: `<rect x="72" y="62" width="15" height="20" rx="2.5" fill="#fff8e8" stroke="${K}" stroke-width="2.2"/><path d="M76 69h8M76 74h8" stroke="${K}" stroke-width="1.7" stroke-linecap="round"/>`,
+  wrench: `<path d="M76 84l9-16" stroke="#5d6b78" stroke-width="4.5" stroke-linecap="round"/><circle cx="86" cy="66" r="5.5" fill="none" stroke="#5d6b78" stroke-width="3.2"/>`,
+  lens: `<circle cx="82" cy="70" r="8" fill="#dff3f0" stroke="${K}" stroke-width="2.6"/><path d="M88 76l7 8" stroke="${K}" stroke-width="3.4" stroke-linecap="round"/>`,
+  flag: `<path d="M80 86V60" stroke="${K}" stroke-width="2.6" stroke-linecap="round"/><path d="M80 60h14l-3.5 6 3.5 6H80z" fill="#d9534f" stroke="${K}" stroke-width="1.8" stroke-linejoin="round"/>`,
+  none: '',
+};
+
+const art: Record<Kind, string> = {
+  // blue droplet sprite: the planner
+  plip: `
+    <g class="tail"><path d="M80 92q14 2 12-14q-9 4-12 14z" fill="#5aa7e8" stroke="${K}" stroke-width="3" stroke-linejoin="round"/></g>
+    <path class="glow" d="M50 28q-8-10-1-22q10 8 5 22z" fill="#8cc6f5" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="60" rx="35" ry="33" fill="#5aa7e8" stroke="${K}" stroke-width="3.2"/>
+    <ellipse cx="50" cy="78" rx="19" ry="13" fill="#d8edff"/>
+    <ellipse cx="36" cy="100" rx="9" ry="5" fill="#3f86c9" stroke="${K}" stroke-width="2.6"/><ellipse cx="64" cy="100" rx="9" ry="5" fill="#3f86c9" stroke="${K}" stroke-width="2.6"/>
+    <ellipse cx="17" cy="78" rx="6" ry="8" fill="#5aa7e8" stroke="${K}" stroke-width="2.6"/>
+    ${eyes()}${blush()}${smile()}`,
+  // orange fire pup: the builder
+  sparko: `
+    <g class="tail"><path d="M80 92q18-2 14-24q-12 8-14 24z" fill="#f2923c" stroke="${K}" stroke-width="3" stroke-linejoin="round"/><path class="glow" d="M90 70q8-12 0-20q-8 10 0 20z" fill="#ffd34d" stroke="${K}" stroke-width="2.4" stroke-linejoin="round"/></g>
+    <path d="M20 40l-6-26l24 14z" fill="#f2923c" stroke="${K}" stroke-width="3" stroke-linejoin="round"/><path d="M80 40l6-26l-24 14z" fill="#f2923c" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M22 34l-3-13l11 7z" fill="#ffd9a8"/><path d="M78 34l3-13l-11 7z" fill="#ffd9a8"/>
+    <ellipse cx="50" cy="60" rx="35" ry="33" fill="#f2923c" stroke="${K}" stroke-width="3.2"/>
+    <path class="glow" d="M50 27q-9-8-2-18q4 6 7 4q5 6-5 14z" fill="#ffd34d" stroke="${K}" stroke-width="2.4" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="78" rx="19" ry="13" fill="#ffe9c9"/>
+    <ellipse cx="36" cy="100" rx="9" ry="5" fill="#d9772a" stroke="${K}" stroke-width="2.6"/><ellipse cx="64" cy="100" rx="9" ry="5" fill="#d9772a" stroke="${K}" stroke-width="2.6"/>
+    <ellipse cx="17" cy="78" rx="6" ry="8" fill="#f2923c" stroke="${K}" stroke-width="2.6"/>
+    ${eyes()}${blush()}${smile()}`,
+  // green sprout bunny: the reviewer
+  sprig: `
+    <g class="tail"><circle cx="86" cy="90" r="7" fill="#fff8e8" stroke="${K}" stroke-width="2.8"/></g>
+    <g class="glow"><path d="M32 38q-14-18-4-34q14 12 8 34z" fill="#7cc576" stroke="${K}" stroke-width="3" stroke-linejoin="round"/><path d="M68 38q14-18 4-34q-14 12-8 34z" fill="#7cc576" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M31 30q-7-10-3-20q6 8 3 20z" fill="#f6b5c5"/><path d="M69 30q7-10 3-20q-6 8-3 20z" fill="#f6b5c5"/></g>
+    <ellipse cx="50" cy="62" rx="35" ry="31" fill="#8fd488" stroke="${K}" stroke-width="3.2"/>
+    <ellipse cx="50" cy="79" rx="19" ry="12" fill="#eaf8e1"/>
+    <ellipse cx="36" cy="100" rx="9" ry="5" fill="#5fae58" stroke="${K}" stroke-width="2.6"/><ellipse cx="64" cy="100" rx="9" ry="5" fill="#5fae58" stroke="${K}" stroke-width="2.6"/>
+    <ellipse cx="17" cy="80" rx="6" ry="8" fill="#8fd488" stroke="${K}" stroke-width="2.6"/>
+    ${eyes(60)}${blush(69)}${smile(70)}`,
+  // purple ghost blob: the tester
+  wisp: `
+    <g class="tail"><path d="M82 86q16 4 12-14q-4 4-12 4z" fill="#b79bea" stroke="${K}" stroke-width="3" stroke-linejoin="round"/></g>
+    <path d="M14 66q0-42 36-42t36 42v28q-6-8-12 0t-12 0t-12 0t-12 0t-12 0z" fill="#b79bea" stroke="${K}" stroke-width="3.2" stroke-linejoin="round"/>
+    <path class="glow" d="M26 18l3 7l7 3l-7 3l-3 7l-3-7l-7-3l7-3z" fill="#ffd34d" stroke="${K}" stroke-width="1.6" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="80" rx="16" ry="10" fill="#e3d6fa"/>
+    <ellipse cx="14" cy="76" rx="6" ry="8" fill="#b79bea" stroke="${K}" stroke-width="2.6"/>
+    ${eyes()}${blush()}
+    <path d="M44 68q6 7 12 0z" fill="#fff" stroke="${K}" stroke-width="2.2" stroke-linejoin="round"/>`,
+  // yellow chick foreman with hard hat
+  hardy: `
+    <g class="tail"><path d="M80 90q12 0 12-12q-8 2-12 12z" fill="#ffd34d" stroke="${K}" stroke-width="3" stroke-linejoin="round"/></g>
+    <ellipse cx="50" cy="62" rx="36" ry="33" fill="#ffd34d" stroke="${K}" stroke-width="3.2"/>
+    <ellipse cx="50" cy="80" rx="19" ry="12" fill="#fff0b3"/>
+    <path d="M14 42q2-30 36-30t36 30z" fill="#e8742c" stroke="${K}" stroke-width="3.2" stroke-linejoin="round"/>
+    <rect x="10" y="40" width="80" height="8" rx="4" fill="#d9632a" stroke="${K}" stroke-width="3"/>
+    <rect x="44" y="6" width="12" height="10" rx="3" fill="#f5b82e" stroke="${K}" stroke-width="2.4"/>
+    <path d="M44 66l6 5l6-5z" fill="#f5953c" stroke="${K}" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M30 100l-3 5M36 100l0 5M64 100l0 5M70 100l3 5" stroke="#f5953c" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M14 76q-10 4-6 14q10-2 10-12z" fill="#ffd34d" stroke="${K}" stroke-width="2.8" stroke-linejoin="round"/>
+    ${eyes(58)}${blush(68)}`,
+};
+---
+<span class:list={['chibi', `chibi-${kind}`, cls]} style={`--d:${delay}s`} data-label={label} aria-hidden="true">
+  <svg viewBox="0 0 100 110" width="100%" height="100%">
+    <ellipse class="shadow" cx="50" cy="106" rx="26" ry="4" fill="#2b2a28" opacity=".14" />
+    <g class="body-bob">
+      <g set:html={art[kind]} />
+      {tool !== 'none' && <g class="arm-r" set:html={tools[tool]} />}
+    </g>
+  </svg>
+</span>
