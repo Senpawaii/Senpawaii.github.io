@@ -8,14 +8,6 @@ export const profile = {
 
 export type StationId = 'about' | 'stack' | 'projects' | 'resume' | 'contact';
 
-export const crew = [
-  { name: 'Plip', role: 'Planner', kind: 'plip', tool: 'clipboard', job: 'Breaks a goal into small steps I can check.' },
-  { name: 'Sparko', role: 'Builder', kind: 'sparko', tool: 'wrench', job: 'Writes the code, one scoped change at a time.' },
-  { name: 'Sprig', role: 'Reviewer', kind: 'sprig', tool: 'lens', job: 'Reads the diff the way a picky teammate would.' },
-  { name: 'Wisp', role: 'Tester', kind: 'wisp', tool: 'flag', job: 'Tries to break the change before anyone else does.' },
-  { name: 'Hardy', role: 'Foreman', kind: 'hardy', tool: 'none', job: 'Keeps the line moving and signs off on what ships.' },
-] as const;
-
 export const services = [
   ['Full-stack delivery', 'Spring Boot and Angular applications, from the first discussion to production.'],
   ['Distributed systems', 'Event-driven, resilient services. It was my research focus at INESC-ID.'],
