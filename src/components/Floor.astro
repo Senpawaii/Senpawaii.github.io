@@ -1,7 +1,7 @@
 ---
-import Robot from './Robot.astro';
+import Chibi from './Chibi.astro';
 import Station from './Station.astro';
-import { stations, crew } from '../data/content';
+import { stations } from '../data/content';
 const colors: Record<string, string> = { about: '#e8742c', stack: '#4c8bd1', resume: '#9b6bd1', contact: '#d9534f', projects: '#2f8f83' };
 const s = Object.fromEntries(stations.map((x) => [x.id, x]));
 const st = (id: string) => ({ id: id as any, label: s[id].label, sub: s[id].sub, k: s[id].key, color: colors[id] });
@@ -47,11 +47,11 @@ const st = (id: string) => ({ id: id as any, label: s[id].label, sub: s[id].sub,
     {[0, 1, 2, 3, 4].map((i) => <span class="crate" style={`--i:${i}`}><i></i></span>)}
   </div>
 
-  <Robot class="r-planner" color={crew[0].color} tool="clipboard" label="Planner" delay={0} />
-  <Robot class="r-builder" color={crew[1].color} tool="wrench" label="Builder" delay={0.6} />
-  <Robot class="r-reviewer" color={crew[2].color} tool="lens" label="Reviewer" delay={1.1} />
-  <Robot class="r-tester" color={crew[3].color} tool="flag" label="Tester" delay={1.6} />
-  <Robot class="r-patrol" color="#f5b82e" label="Foreman" delay={0.3} />
+  <Chibi class="r-planner" kind="plip" tool="clipboard" label="Plip · Planner" delay={0} />
+  <Chibi class="r-builder" kind="sparko" tool="wrench" label="Sparko · Builder" delay={0.6} />
+  <Chibi class="r-reviewer" kind="sprig" tool="lens" label="Sprig · Reviewer" delay={1.1} />
+  <Chibi class="r-tester" kind="wisp" tool="flag" label="Wisp · Tester" delay={1.6} />
+  <Chibi class="r-patrol" kind="hardy" label="Hardy · Foreman" delay={0.3} />
 
-  <p class="hint" aria-hidden="true">Click a station · or press 1–5</p>
+  <p class="hint" aria-hidden="true">Click a station, or press 1 to 5</p>
 </div>

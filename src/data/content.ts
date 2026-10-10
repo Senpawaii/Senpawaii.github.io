@@ -17,17 +17,18 @@ export const stations: { id: StationId; key: string; label: string; sub: string 
 ];
 
 export const crew = [
-  { name: 'Planner', color: '#4c8bd1', tool: 'clipboard', job: 'Breaks a goal into small, checkable steps.' },
-  { name: 'Builder', color: '#e8742c', tool: 'wrench', job: 'Writes the code, one scoped change at a time.' },
-  { name: 'Reviewer', color: '#2f8f83', tool: 'lens', job: 'Reads the diff like a skeptical teammate.' },
-  { name: 'Tester', color: '#9b6bd1', tool: 'flag', job: 'Tries to break it before anyone else can.' },
+  { name: 'Plip', role: 'Planner', kind: 'plip', tool: 'clipboard', job: 'Breaks a goal into small steps I can check.' },
+  { name: 'Sparko', role: 'Builder', kind: 'sparko', tool: 'wrench', job: 'Writes the code, one scoped change at a time.' },
+  { name: 'Sprig', role: 'Reviewer', kind: 'sprig', tool: 'lens', job: 'Reads the diff the way a picky teammate would.' },
+  { name: 'Wisp', role: 'Tester', kind: 'wisp', tool: 'flag', job: 'Tries to break the change before anyone else does.' },
+  { name: 'Hardy', role: 'Foreman', kind: 'hardy', tool: 'none', job: 'Keeps the line moving and signs off on what ships.' },
 ] as const;
 
 export const services = [
-  ['Full-stack delivery', 'Spring Boot and Angular applications, from the first conversation to production.'],
-  ['Distributed systems', 'Event-driven, resilient services; this was my research focus at INESC-ID.'],
+  ['Full-stack delivery', 'Spring Boot and Angular applications, from the first discussion to production.'],
+  ['Distributed systems', 'Event-driven, resilient services. It was my research focus at INESC-ID.'],
   ['Cloud-native operations', 'Containers, Kubernetes, CI/CD and observability, so changes ship safely.'],
-  ['AI-assisted engineering', 'Directing agents as a crew, with benchmarks to check they actually help.'],
+  ['AI-assisted engineering', 'Directing agents like a crew, then benchmarking them to see whether they help.'],
 ] as const;
 
 export const stack: { group: string; items: string[] }[] = [
@@ -79,7 +80,7 @@ export const projects = [
     name: 'eShopOnContainersThesis',
     url: 'https://github.com/Senpawaii/eShopOnContainersThesis',
     tag: 'Research',
-    text: 'A fork of Microsoft’s microservices reference application, used as a testbed for my MSc research on consistency.',
+    text: 'A fork of Microsoft’s microservices reference application, which I used as a testbed for my MSc research on consistency.',
     tech: ['.NET', 'Kubernetes', 'RabbitMQ'],
   },
 ];
@@ -88,11 +89,11 @@ export const experience = [
   {
     org: 'Accenture Portugal',
     ctx: 'Fintech',
-    when: 'Nov 2023 – Present',
+    when: 'Nov 2023 to Present',
     roles: [
       {
         title: 'Mid Full-Stack Engineer',
-        when: 'Apr 2025 – Present',
+        when: 'Apr 2025 to Present',
         points: [
           'Resolved long-standing application bottlenecks, improving throughput and latency by roughly 300%.',
           'Led the migration of legacy applications to Spring Boot and Angular 19.',
@@ -103,9 +104,9 @@ export const experience = [
       },
       {
         title: 'Junior Full-Stack Engineer',
-        when: 'Nov 2023 – Mar 2025',
+        when: 'Nov 2023 to Mar 2025',
         points: [
-          'Raised test coverage across several products from 20–30% to above 90%.',
+          'Raised test coverage across several products from 20 to 30% to above 90%.',
           'Built the integration-test infrastructure for legacy products with colleagues.',
           'Helped migrate deployments to AWS Kubernetes clusters and shortened feature delivery times.',
           'Co-led the work that unblocked a three-year integration between two platforms in a Fintech automation initiative.',
@@ -116,7 +117,7 @@ export const experience = [
   {
     org: 'INESC-ID Lisbon',
     ctx: 'Research',
-    when: 'Feb 2023 – Nov 2023',
+    when: 'Feb 2023 to Nov 2023',
     roles: [
       {
         title: 'Early Stage Researcher',
@@ -133,13 +134,13 @@ export const education = [
   {
     school: 'Instituto Superior Técnico, University of Lisbon',
     degree: 'MSc, Computer Science and Engineering',
-    when: 'Sep 2021 – Nov 2023',
+    when: 'Sep 2021 to Nov 2023',
     note: 'Distributed Systems and Data Science. Courses: Parallel and Distributed Computing, Highly Dependable Systems, Design of Distributed Applications, Cloud Computing and Virtualization, Deep Learning.',
   },
   {
     school: 'Instituto Superior Técnico, University of Lisbon',
     degree: 'BSc, Computer Science and Engineering',
-    when: 'Sep 2018 – Jul 2021',
+    when: 'Sep 2018 to Jul 2021',
     note: 'Academic Merit Diploma 2019/20 and 2020/21. Mentored new students through their first year.',
   },
 ];

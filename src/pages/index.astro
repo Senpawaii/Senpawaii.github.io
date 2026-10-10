@@ -3,14 +3,14 @@ import '@fontsource-variable/nunito';
 import { Image } from 'astro:assets';
 import '../styles/global.css';
 import Floor from '../components/Floor.astro';
-import Robot from '../components/Robot.astro';
+import Chibi from '../components/Chibi.astro';
 import { profile, stations, crew, services, stack, projects, experience, education, awards } from '../data/content';
 import portrait from '../assets/profile.jpeg';
 import poster from '../assets/inforum-poster.jpg';
 
 const title = `${profile.name} · ${profile.role}`;
 const description =
-  'Full-stack engineer in Lisbon who builds distributed systems and directs a crew of AI agents. Explore the factory floor.';
+  'Full-stack engineer in Lisbon who builds distributed systems and works with a crew of AI agents. Explore the factory floor.';
 const url = 'https://senpawaii.github.io/';
 const ld = {
   '@context': 'https://schema.org',
@@ -48,7 +48,7 @@ const stationName = Object.fromEntries(stations.map((s) => [s.id, s]));
         <h1>{profile.name}</h1>
         <p>{profile.role} · {profile.place}</p>
       </div>
-      <p class="tagline">I build things, and the crews that build them.</p>
+      <p class="tagline">I build software, with a small crew of AI agents helping out.</p>
       <nav class="social" aria-label="Profiles">
         <a href={profile.github} rel="me noopener" target="_blank">GitHub</a>
         <a href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
@@ -75,16 +75,16 @@ const stationName = Object.fromEntries(stations.map((s) => [s.id, s]));
           <div class="about-top">
             <Image src={portrait} alt="Portrait of João Queirós" width={220} height={220} class="portrait" loading="lazy" />
             <div class="prose">
-              <p class="lead">Engineer first, with AI as a multiplier.</p>
+              <p class="lead">I'm a full-stack engineer who likes building things and running the crew that builds them.</p>
               <p>
-                I’m a full-stack engineer based in Lisbon with an MSc in Computer Science from Instituto Superior Técnico,
-                where I specialised in distributed systems. Since 2023 I’ve been building and modernising Fintech platforms at
-                Accenture with Java, Spring Boot, Angular, Kafka and Kubernetes.
+                I live in Lisbon and work on Fintech platforms at Accenture, mostly with Java, Spring Boot, Angular, Kafka
+                and Kubernetes. Before that I did an MSc in Computer Science at Instituto Superior Técnico, where I
+                specialised in distributed systems.
               </p>
               <p>
-                What I enjoy most is orchestration: breaking work into pieces, putting the right worker on each one, and
-                checking the result. Lately that crew includes AI agents. I’m building tools to measure whether an agent’s
-                skills actually help, because a crew is only useful if you can trust what it hands back.
+                Outside the day job I like orchestration. I split a task into pieces, give each piece to the right worker
+                and check what comes back. Some of those workers are now AI agents, so I've been building tools that measure
+                whether an agent's skills help or only add cost. The creatures on the factory floor stand in for that crew.
               </p>
             </div>
           </div>
@@ -93,8 +93,8 @@ const stationName = Object.fromEntries(stations.map((s) => [s.id, s]));
           <ul class="crew-list">
             {crew.map((c) => (
               <li>
-                <span class="crew-bot"><Robot color={c.color} tool={c.tool} /></span>
-                <div><strong>{c.name}</strong><p>{c.job}</p></div>
+                <span class="crew-bot"><Chibi kind={c.kind} tool={c.tool} /></span>
+                <div><strong>{c.name}</strong> <span class="role-tag">{c.role}</span><p>{c.job}</p></div>
               </li>
             ))}
           </ul>
@@ -107,7 +107,7 @@ const stationName = Object.fromEntries(stations.map((s) => [s.id, s]));
 
         <!-- STACK -->
         <section data-panel="stack" hidden>
-          <p class="lead">The machines I work with every day.</p>
+          <p class="lead">The tools I use most.</p>
           <div class="stack-grid">
             {stack.map((g) => (
               <div class="card">
@@ -120,7 +120,7 @@ const stationName = Object.fromEntries(stations.map((s) => [s.id, s]));
 
         <!-- PROJECTS -->
         <section data-panel="projects" hidden>
-          <p class="lead">Things I’ve shipped, tinkered with, or researched. All public.</p>
+          <p class="lead">A selection of my public repos.</p>
           <ul class="cards three">
             {projects.map((p) => (
               <li class="card project">
@@ -177,10 +177,10 @@ const stationName = Object.fromEntries(stations.map((s) => [s.id, s]));
 
         <!-- CONTACT -->
         <section data-panel="contact" hidden>
-          <p class="lead">The dispatch desk is open.</p>
+          <p class="lead">Say hello.</p>
           <p>
-            If you’d like to talk about distributed systems, building with agents, or something you’re working on, the best
-            places to find me are below. I’m based in {profile.place}.
+            I'm happy to talk about distributed systems, building with agents, or whatever you're working on. LinkedIn and
+            GitHub are the best places to find me. I'm in {profile.place}.
           </p>
           <div class="contact-links">
             <a class="big-link" href={profile.linkedin} target="_blank" rel="me noopener">
