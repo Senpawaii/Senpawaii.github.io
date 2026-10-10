@@ -67,51 +67,106 @@ main { display: grid; place-items: center; padding: 18px clamp(8px, 2vw, 28px) 1
   box-shadow: 0 8px 0 var(--ink);
 }
 .floor-art { position: absolute; inset: 0; width: 100%; height: 100%; }
-.belt-lines { animation: belt 1.1s linear infinite; }
-@keyframes belt { to { transform: translateX(44px); } }
-.cogs { transform-origin: center; }
 
-.slot { position: absolute; width: 19cqw; }
-.slot-about { left: 6cqw; top: 5.2cqw; }
-.slot-stack { left: 36cqw; top: 5.2cqw; }
-.slot-resume { left: 66cqw; top: 5.2cqw; }
-.slot-contact { left: 8cqw; top: 36cqw; width: 16cqw; }
-.slot-projects { left: 71cqw; top: 35cqw; width: 18cqw; }
+/* conveyor lines: tier 1 runs right, a pipe drops down, tier 2 runs back left */
+.belt {
+  position: absolute; z-index: 1; border: 3px solid var(--ink); background-color: #3f4a54;
+  box-shadow: inset 0 .45cqw 0 #5d6b78, inset 0 -.45cqw 0 #5d6b78;
+}
+.belt-1, .belt-2 {
+  height: 4cqw; background-image: linear-gradient(90deg, rgba(255,255,255,.16) 0 .45cqw, transparent .45cqw);
+  background-size: 2.75cqw 100%; animation: belt-r 1.3s linear infinite;
+}
+.belt-1 { left: -1cqw; width: 99.5cqw; top: 21cqw; border-radius: 0 1.4cqw 0 0; }
+.belt-2 { left: -1cqw; width: 99.5cqw; top: 48.8cqw; border-radius: 0 0 1.4cqw 0; animation-name: belt-l; }
+.belt-pipe {
+  left: 94cqw; top: 21cqw; width: 3.5cqw; height: 31.8cqw;
+  background-image: linear-gradient(180deg, rgba(255,255,255,.16) 0 .45cqw, transparent .45cqw);
+  background-size: 100% 2.75cqw; animation: belt-d 1.3s linear infinite;
+}
+@keyframes belt-r { to { background-position: 2.75cqw 0; } }
+@keyframes belt-l { to { background-position: -2.75cqw 0; } }
+@keyframes belt-d { to { background-position: 0 2.75cqw; } }
+.roller { position: absolute; z-index: 2; width: 2.4cqw; height: 2.4cqw; border-radius: 50%; background: #9fb0bd; border: 3px solid var(--ink); }
+.roller-a { left: .3cqw; top: 21.8cqw; }
+.roller-b { left: .3cqw; top: 49.6cqw; }
+
+/* machines: tier 1 above the upper line, tier 2 above the lower one; the sign sits on top of each */
+.slot { position: absolute; z-index: 2; display: flex; }
+.slot-about { left: 6cqw; top: 3.8cqw; width: 19.2cqw; height: 17.2cqw; }
+.slot-stack { left: 36cqw; top: 3.8cqw; width: 27.5cqw; height: 17.2cqw; }
+.slot-resume { left: 70.5cqw; top: 3.8cqw; width: 18.3cqw; height: 17.2cqw; }
+.slot-contact { left: 14cqw; top: 31.6cqw; width: 16.7cqw; height: 17.2cqw; }
+.slot-projects { left: 60cqw; top: 31.6cqw; width: 27.5cqw; height: 17.2cqw; }
 
 .station {
-  all: unset; box-sizing: border-box; cursor: pointer; display: block; width: 100%; position: relative; text-align: center;
-  transition: transform .18s cubic-bezier(.3, 1.6, .5, 1);
+  all: unset; box-sizing: border-box; cursor: pointer; width: 100%; height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end; gap: 0; transition: transform .18s cubic-bezier(.3, 1.6, .5, 1);
 }
-.station:hover, .station:focus-visible { transform: translateY(-.8cqw) scale(1.03); }
-.station:focus-visible { outline: 3px solid var(--orange); outline-offset: 6px; border-radius: 12px; }
-.building { width: 100%; height: auto; display: block; filter: drop-shadow(0 .5cqw 0 rgba(43, 42, 40, .22)); }
+.station:hover, .station:focus-visible { transform: translateY(-.7cqw); }
+.station:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; border-radius: 12px; }
+.machine { flex: none; height: 12.5cqw; width: 100%; overflow: visible; display: block; filter: drop-shadow(0 .4cqw 0 rgba(43, 42, 40, .2)); }
+.station:hover .machine, .station:focus-visible .machine { filter: drop-shadow(0 .4cqw 0 rgba(43, 42, 40, .2)) brightness(1.04); }
 .sign {
-  display: block; margin: -.4cqw auto 0; width: fit-content; max-width: 100%;
+  flex: none; display: flex; align-items: center; gap: .8cqw; margin-bottom: .9cqw; position: relative;
   background: var(--s); color: #fff; border: 3px solid var(--ink); border-radius: 10px;
-  padding: .35cqw 1.2cqw; box-shadow: 0 .35cqw 0 var(--ink); position: relative;
+  padding: .3cqw 1.1cqw .3cqw .6cqw; box-shadow: 0 .3cqw 0 var(--ink); white-space: nowrap;
 }
-.sign b { display: block; font-size: 1.5cqw; line-height: 1.2; font-weight: 900; text-shadow: 0 1px 0 rgba(0,0,0,.25); }
-.sign small { display: block; font-size: 1.1cqw; font-weight: 700; opacity: .95; }
-.station kbd {
-  position: absolute; top: 1.2cqw; right: .6cqw; font: 800 1.1cqw/1 inherit; background: #fff; border: 2px solid var(--ink);
-  border-radius: 6px; width: 2.2cqw; height: 2.2cqw; display: grid; place-items: center; opacity: .85;
-}
+.sign::before, .sign::after { content: ''; position: absolute; top: 100%; width: .5cqw; height: 1cqw; background: var(--ink); }
+.sign::before { left: 18%; } .sign::after { right: 18%; }
+.sign-text b { display: block; font-size: 1.45cqw; line-height: 1.15; font-weight: 900; text-shadow: 0 1px 0 rgba(0,0,0,.25); }
+.sign-text small { display: block; font-size: 1.05cqw; line-height: 1.2; font-weight: 700; opacity: .95; }
+.sign kbd { font: 900 1.15cqw/1 inherit; background: #fff; color: var(--ink); border: 2px solid var(--ink); border-radius: 6px; width: 2.1cqw; height: 2.1cqw; display: grid; place-items: center; flex: none; }
 .hint {
-  position: absolute; left: 50%; bottom: 1.2cqw; transform: translateX(-50%); margin: 0; font-weight: 800; font-size: 1.2cqw;
-  background: var(--paper-2); border: 2px solid var(--ink); border-radius: 999px; padding: .2cqw 1.4cqw;
+  position: absolute; z-index: 6; left: 50%; bottom: .35cqw; transform: translateX(-50%); margin: 0; font-weight: 800; font-size: 1.15cqw;
+  background: var(--paper-2); border: 2px solid var(--ink); border-radius: 999px; padding: .1cqw 1.3cqw;
 }
 
-/* crates travelling the belt: raw idea -> shipped */
-.crates { position: absolute; inset: 0; pointer-events: none; }
+/* quality gate arch over the lower line */
+.gate { position: absolute; z-index: 3; left: 41cqw; top: 40.5cqw; width: 8cqw; height: 9.4cqw; pointer-events: none; }
+.gate i { position: absolute; top: 1.6cqw; bottom: 0; width: 1cqw; background: #7d8b97; border: 3px solid var(--ink); }
+.gate i:first-child { left: 0; } .gate i:nth-child(2) { right: 0; }
+.gate b { position: absolute; left: 0; right: 0; top: 0; height: 2.6cqw; background: var(--yellow); border: 3px solid var(--ink); border-radius: 8px; display: grid; place-items: center; font-size: 1.3cqw; font-weight: 900; }
+
+/* machine animations */
+.spin { animation: spin 7s linear infinite; transform-box: fill-box; transform-origin: center; }
+.spin-rev { animation-direction: reverse; animation-duration: 5s; }
+.piston { animation: piston 1.4s ease-in-out infinite; }
+.blink { animation: blink-light 1.6s steps(2) infinite; }
+.blink.b2 { animation-delay: .5s; }
+.beacon { animation: blink-light 1.2s steps(2) infinite; }
+.steam circle { animation: steam 3.2s ease-out infinite; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.steam .s2 { animation-delay: 1s; } .steam .s3 { animation-delay: 2s; }
+.paper { animation: paper 3.4s ease-in-out infinite; }
+.stamp { animation: stamp 3.4s ease-in-out infinite; }
+.swing { animation: swing 3.6s ease-in-out infinite; transform-origin: 208px 13px; transform-box: view-box; }
+.ping { animation: ping 2s ease-in-out infinite; }
+.ping.p2 { animation-delay: .3s; } .ping.p3 { animation-delay: .6s; } .ping.p4 { animation-delay: .9s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes piston { 50% { transform: translateY(14px); } }
+@keyframes blink-light { 50% { opacity: .25; } }
+@keyframes steam { 0% { opacity: .9; transform: translateY(0) scale(.6); } 100% { opacity: 0; transform: translateY(-16px) scale(1.5); } }
+@keyframes paper { 0%, 100% { transform: translateY(8px); } 50% { transform: translateY(-4px); } }
+@keyframes stamp { 0%, 55%, 100% { transform: translateY(0); } 70% { transform: translateY(20px); } 80% { transform: translateY(20px); } }
+@keyframes swing { 50% { transform: rotate(7deg); } }
+@keyframes ping { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
+
+/* crates ride the upper line, drop down the pipe and come back along the lower line */
+.crates { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
 .crate {
-  position: absolute; left: -5cqw; width: 4cqw; height: 4cqw; top: 29cqw; z-index: 2;
-  animation: ride 15s linear infinite; animation-delay: calc(var(--i) * -3s);
+  position: absolute; left: -4cqw; top: 21.6cqw; width: 2.8cqw; height: 2.8cqw;
+  animation: ride 42s linear infinite; animation-delay: calc(var(--i) * -8.4s);
 }
-.crate i { display: block; width: 100%; height: 100%; border: 3px solid var(--ink); border-radius: 6px; background: #c9bfa7;
-  animation: ripen 15s linear infinite; animation-delay: calc(var(--i) * -3s); position: relative; }
+.crate i { display: block; width: 100%; height: 100%; border: 3px solid var(--ink); border-radius: 5px; background: #c9bfa7; position: relative;
+  animation: ripen 42s linear infinite; animation-delay: calc(var(--i) * -8.4s); }
 .crate i::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: rgba(43,42,40,.35); transform: translateX(-50%); }
-@keyframes ride { from { left: -5cqw; } to { left: 81cqw; } }
-@keyframes ripen { 0% { background: #c9bfa7; } 35% { background: var(--yellow); } 70% { background: var(--orange); } 100% { background: var(--teal); } }
+@keyframes ride {
+  0% { left: -4cqw; top: 21.6cqw; }
+  43.8% { left: 94.35cqw; top: 21.6cqw; }
+  56.2% { left: 94.35cqw; top: 49.4cqw; }
+  100% { left: -4cqw; top: 49.4cqw; }
+}
+@keyframes ripen { 0% { background: #c9bfa7; } 40% { background: var(--yellow); } 70% { background: var(--orange); } 100% { background: var(--teal); } }
 
 /* ---------- robots ---------- */
 .chibi { position: absolute; width: 5.6cqw; aspect-ratio: 100 / 110; display: block; z-index: 3; pointer-events: auto; }
@@ -135,12 +190,18 @@ main { display: grid; place-items: center; padding: 18px clamp(8px, 2vw, 28px) 1
 @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
 @keyframes wave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-12deg); } }
 
-.r-planner { left: 27.5cqw; top: 13cqw; }
-.r-builder { left: 57.5cqw; top: 13cqw; }
-.r-reviewer { left: 42cqw; top: 38cqw; }
-.r-tester { left: 58cqw; top: 40cqw; }
-.r-patrol { top: 42.5cqw; left: 27cqw; width: 6cqw; animation: patrol 18s ease-in-out infinite alternate; }
-@keyframes patrol { to { left: 63cqw; } }
+/* chibis walk the aisle between the two lines, pausing at the machines */
+.floor > .chibi { top: 25.2cqw; z-index: 5; }
+.r-planner { animation: walk-plip 26s ease-in-out infinite; }
+.r-builder { animation: walk-sparko 30s ease-in-out infinite; }
+.r-reviewer { animation: walk-sprig 34s ease-in-out infinite; }
+.r-tester { animation: walk-wisp 24s ease-in-out infinite; }
+.r-patrol { width: 6cqw; animation: walk-hardy 64s linear infinite; animation-delay: -22s; }
+@keyframes walk-plip { 0%, 4% { left: 8cqw; } 22%, 34% { left: 22cqw; } 52%, 62% { left: 36cqw; } 84%, 100% { left: 8cqw; } }
+@keyframes walk-sparko { 0%, 6% { left: 38cqw; } 24%, 38% { left: 52cqw; } 56%, 66% { left: 66cqw; } 86%, 100% { left: 38cqw; } }
+@keyframes walk-sprig { 0%, 8% { left: 70cqw; } 26%, 40% { left: 80cqw; } 58%, 68% { left: 89cqw; } 88%, 100% { left: 70cqw; } }
+@keyframes walk-wisp { 0%, 100% { left: 14cqw; top: 24.2cqw; } 25% { left: 42cqw; top: 26cqw; } 50% { left: 68cqw; top: 24cqw; } 75% { left: 42cqw; top: 26cqw; } }
+@keyframes walk-hardy { 0%, 3% { left: 3cqw; } 20%, 26% { left: 30cqw; } 46%, 52% { left: 58cqw; } 70%, 76% { left: 86cqw; } 100% { left: 3cqw; } }
 
 /* ---------- panel ---------- */
 dialog {
@@ -210,7 +271,7 @@ dialog::backdrop { background: rgba(43, 42, 40, .5); backdrop-filter: blur(2px);
 .big-link strong { display: block; font-size: 1.4rem; }
 .big-link span { color: var(--ink-2); font-weight: 700; }
 
-/* ---------- small screens: the floor becomes a tile grid ---------- */
+/* ---------- small screens: the floor becomes a grid of machines ---------- */
 @media (max-width: 860px), (max-aspect-ratio: 1/1) {
   :root { --bar-h: 64px; }
   body { overflow: auto; }
@@ -218,13 +279,15 @@ dialog::backdrop { background: rgba(43, 42, 40, .5); backdrop-filter: blur(2px);
   .tagline { order: 3; flex-basis: 100%; text-align: left; font-size: .9rem; }
   main { place-items: start center; }
   .floor { aspect-ratio: auto; container-type: normal; width: 100%; display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px 10px; padding: 14px; box-shadow: 0 6px 0 var(--ink); }
-  .floor-art, .crates, .hint, .r-patrol { display: none; }
-  .slot { position: static; width: auto; grid-column: span 6; }
+  .floor-art, .crates, .hint, .r-patrol, .belt, .roller, .gate { display: none; }
+  .slot { position: static; width: auto; height: auto; grid-column: span 6; }
   .slot-projects { grid-column: span 12; }
-  .building { max-height: 17dvh; }
-  .sign b { font-size: .92rem; } .sign small { font-size: .74rem; } .sign { padding: 2px 10px; }
-  .station kbd { display: none; }
-  .chibi { position: relative; left: auto !important; top: auto !important; width: auto; grid-column: span 3; justify-self: center; max-width: 64px; }
+  .station { height: auto; }
+  .machine { flex: none; height: auto; max-height: 15dvh; }
+  .sign { gap: 6px; padding: 2px 10px 2px 6px; }
+  .sign-text b { font-size: .88rem; } .sign-text small { font-size: .72rem; }
+  .sign kbd { display: none; }
+  .chibi { position: relative; left: auto !important; top: auto !important; width: auto; grid-column: span 3; justify-self: center; max-width: 64px; animation: none !important; }
   .chibi::after { display: none; }
 }
 
