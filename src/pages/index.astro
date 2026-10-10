@@ -3,8 +3,7 @@ import '@fontsource-variable/nunito';
 import { Image } from 'astro:assets';
 import '../styles/global.css';
 import Backdrop from '../components/Backdrop.astro';
-import Chibi from '../components/Chibi.astro';
-import { profile, crew, services, stack, projects, experience, education, awards } from '../data/content';
+import { profile, services, stack, projects, experience, education, awards } from '../data/content';
 import portrait from '../assets/profile.jpeg';
 import poster from '../assets/inforum-poster.jpg';
 
@@ -57,24 +56,20 @@ const tabs = [
     <Backdrop />
 
     <div class="page">
-      <aside class="rail glass">
-        <Image src={portrait} alt="Portrait of João Queirós" width={240} height={240} class="portrait" loading="eager" />
-        <h1>{profile.name}</h1>
-        <p class="role">{profile.role} · {profile.place}</p>
-        <p class="tagline">Distributed-systems engineer in Fintech, learning to run a crew of AI agents.</p>
-        <ul class="proof" aria-label="Highlights">
-          <li>~300% faster throughput on a legacy platform</li>
-          <li>Test coverage from 20–30% to 90%+</li>
-          <li>95%+ fewer read anomalies in award-winning MSc research</li>
-        </ul>
-        <nav class="social" aria-label="Profiles">
-          <a href={profile.github} rel="me noopener" target="_blank">GitHub</a>
-          <a href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
-        </nav>
-        <p class="aside-note">Behind the glass: my agent crew, keeping the line moving.</p>
-      </aside>
 
       <main class="card glass" id="content">
+        <header class="id">
+          <Image src={portrait} alt="Portrait of João Queirós" width={160} height={160} class="portrait" loading="eager" />
+          <div class="id-text">
+            <h1>{profile.name}</h1>
+            <p class="id-role">{profile.role} · {profile.place}</p>
+            <p class="tagline">Distributed-systems engineer in Fintech, learning to run a crew of AI agents.</p>
+          </div>
+          <nav class="social" aria-label="Profiles">
+            <a href={profile.github} rel="me noopener" target="_blank">GitHub</a>
+            <a href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+          </nav>
+        </header>
         <div class="tabs" role="tablist" aria-label="Sections">
           {tabs.map(([id, label]) => (
             <button type="button" role="tab" id={`tab-${id}`} data-tab={id} aria-controls={`pane-${id}`} aria-selected="false">{label}</button>
@@ -92,19 +87,9 @@ const tabs = [
               <p>
                 Outside the day job I like orchestration. I split a task into pieces, give each piece to the right worker
                 and check what comes back. Some of those workers are now AI agents, so I've been building tools that measure
-                whether an agent's skills help or only add cost. The creatures on the factory floor stand in for that crew.
+                whether an agent's skills help or only add cost.
               </p>
             </div>
-
-          <h3>The crew</h3>
-          <ul class="crew-list">
-            {crew.map((c) => (
-              <li>
-                <span class="crew-bot"><Chibi kind={c.kind} tool={c.tool} /></span>
-                <div><strong>{c.name}</strong> <span class="role-tag">{c.role}</span><p>{c.job}</p></div>
-              </li>
-            ))}
-          </ul>
 
           <h3>What I do</h3>
           <ul class="cards two">
