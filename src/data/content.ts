@@ -175,7 +175,7 @@ export const results = [
   { value: 'End to end', label: 'Owner of an AI-powered automation platform, from architecture to delivery', where: 'Pictet Tech' },
   { value: 'LLMs', label: 'Self-service document processing through modular, reusable connectors', where: 'Pictet Tech' },
   { value: 'Event-driven', label: 'Workflow orchestration on Kafka, IBM MQ and Temporal, built for resilience', where: 'Pictet Tech' },
-  { value: 'Led the project', label: 'Code review, mentoring and backlog shaping with product owners', where: 'Pictet Tech' },
+  { value: 'Project lead', label: 'Reviewing code, mentoring engineers and shaping the backlog with product owners', where: 'Pictet Tech' },
 ] as const;
 
 export const glance = [
