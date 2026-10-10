@@ -38,17 +38,29 @@ const stationName = Object.fromEntries(stations.map((s) => [s.id, s]));
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://senpawaii.github.io/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://senpawaii.github.io/og.png" />
     <script type="application/ld+json" set:html={JSON.stringify(ld)} />
   </head>
   <body>
+    <noscript><style>dialog{display:block!important;position:static;width:auto;max-height:none;margin:16px;box-shadow:none}[data-panel]{display:block!important}.panel-head h2:empty,.panel-head .eyebrow:empty{display:none}body{overflow:auto}.floor{display:none}</style></noscript>
     <a class="skip" href="#panel-launch">Skip to the station list</a>
     <header class="bar">
       <div class="who">
         <h1>{profile.name}</h1>
         <p>{profile.role} · {profile.place}</p>
       </div>
-      <p class="tagline">I build software, with a small crew of AI agents helping out.</p>
+      <div class="pitch">
+        <p class="tagline">Distributed-systems engineer in Fintech, learning to run a crew of AI agents.</p>
+        <ul class="proof" aria-label="Highlights">
+          <li>~300% faster throughput on a legacy platform</li>
+          <li>Test coverage from 20–30% to 90%+</li>
+          <li>Best Student Poster, INForum 2023</li>
+        </ul>
+      </div>
       <nav class="social" aria-label="Profiles">
         <a href={profile.github} rel="me noopener" target="_blank">GitHub</a>
         <a href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>

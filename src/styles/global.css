@@ -8,7 +8,7 @@
   --orange: #e8742c;
   --teal: #2f8f83;
   --line: #2b2a28;
-  --bar-h: 72px;
+  --bar-h: 104px;
   --radius: 16px;
   --shadow: 0 4px 0 var(--ink);
   color-scheme: light;
@@ -44,7 +44,10 @@ a { color: inherit; }
   background: repeating-linear-gradient(135deg, var(--yellow) 0 14px, var(--ink) 14px 28px); border-bottom: 2px solid var(--ink); z-index: 2; }
 .who h1 { font-size: clamp(1.3rem, 2.4vw, 1.75rem); margin: 0; line-height: 1.1; letter-spacing: -.01em; }
 .who p { margin: 2px 0 0; color: var(--ink-2); font-size: .92rem; font-weight: 600; }
-.tagline { margin: 0; font-weight: 800; font-size: clamp(.95rem, 1.6vw, 1.15rem); text-align: center; flex: 1; }
+.pitch { flex: 1; display: grid; gap: 8px; justify-items: center; }
+.tagline { margin: 0; font-weight: 800; font-size: clamp(.95rem, 1.5vw, 1.15rem); text-align: center; max-width: 52ch; line-height: 1.3; }
+.proof { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.proof li { font-size: .76rem; font-weight: 800; background: #fff; border: 2px solid var(--ink); border-radius: 999px; padding: 1px 10px; }
 .social { display: flex; gap: 10px; }
 .social a {
   text-decoration: none; font-weight: 800; font-size: .9rem; padding: 8px 14px; border-radius: 999px;
@@ -53,9 +56,9 @@ a { color: inherit; }
 .social a:hover { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); background: var(--yellow); }
 
 /* ---------- floor ---------- */
-main { display: grid; place-items: center; padding: 18px clamp(8px, 2vw, 28px) 12px; min-height: 0; }
+main { display: grid; place-items: center; padding: 18px clamp(8px, 2vw, 28px) 14px; min-height: 0; container-type: size; }
 .floor {
-  --w: min(100%, calc((100dvh - var(--bar-h) - 44px) * 16 / 9));
+  --w: min(100cqw, calc(100cqh * 16 / 9));
   width: var(--w);
   aspect-ratio: 16 / 9;
   position: relative;
@@ -114,8 +117,8 @@ main { display: grid; place-items: center; padding: 18px clamp(8px, 2vw, 28px) 1
 }
 .sign::before, .sign::after { content: ''; position: absolute; top: 100%; width: .5cqw; height: 1cqw; background: var(--ink); }
 .sign::before { left: 18%; } .sign::after { right: 18%; }
-.sign-text b { display: block; font-size: 1.45cqw; line-height: 1.15; font-weight: 900; text-shadow: 0 1px 0 rgba(0,0,0,.25); }
-.sign-text small { display: block; font-size: 1.05cqw; line-height: 1.2; font-weight: 700; opacity: .95; }
+.sign-text b { display: block; font-size: 1.5cqw; line-height: 1.15; font-weight: 900; text-shadow: 0 1px 0 rgba(0,0,0,.25); }
+.sign-text small { display: block; font-size: 1.2cqw; line-height: 1.2; font-weight: 700; opacity: .95; }
 .sign kbd { font: 900 1.15cqw/1 inherit; background: #fff; color: var(--ink); border: 2px solid var(--ink); border-radius: 6px; width: 2.1cqw; height: 2.1cqw; display: grid; place-items: center; flex: none; }
 .hint {
   position: absolute; z-index: 6; left: 50%; bottom: .35cqw; transform: translateX(-50%); margin: 0; font-weight: 800; font-size: 1.15cqw;
@@ -172,9 +175,10 @@ main { display: grid; place-items: center; padding: 18px clamp(8px, 2vw, 28px) 1
 .chibi { position: absolute; width: 5.6cqw; aspect-ratio: 100 / 110; display: block; z-index: 3; pointer-events: auto; }
 .chibi svg { overflow: visible; }
 .chibi::after {
-  content: attr(data-label); position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, 4px) scale(.9);
-  background: #fff; border: 2px solid var(--ink); border-radius: 8px; padding: 0 .8cqw; font: 800 1.1cqw/1.6 inherit; white-space: nowrap;
-  opacity: 0; pointer-events: none; transition: .15s;
+  content: attr(data-label) "\A" attr(data-fact); white-space: pre; text-align: center;
+  position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, 4px) scale(.9);
+  background: #fff; border: 2px solid var(--ink); border-radius: 10px; padding: .1cqw 1cqw; font: 800 1.1cqw/1.5 inherit;
+  opacity: 0; pointer-events: none; transition: .15s; z-index: 10; box-shadow: 0 .25cqw 0 var(--ink);
 }
 .chibi:hover::after { opacity: 1; transform: translate(-50%, 0) scale(1); }
 .body-bob { animation: bob 2.2s ease-in-out infinite; animation-delay: var(--d); transform-origin: 50px 104px; transform-box: view-box; }
@@ -256,7 +260,7 @@ dialog::backdrop { background: rgba(43, 42, 40, .5); backdrop-filter: blur(2px);
 .job { margin-bottom: 14px; }
 .job header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; border-bottom: 3px dashed var(--ink); padding-bottom: 4px; margin-bottom: 8px; }
 .job h4 { margin: 0; font-size: 1.1rem; }
-.when { font-size: .85rem; font-weight: 800; color: var(--orange); white-space: nowrap; }
+.when { font-size: .85rem; font-weight: 800; color: #b24a0d; white-space: nowrap; }
 .role { margin: 0 0 12px 12px; padding-left: 12px; border-left: 4px solid var(--yellow); }
 .role-title { margin: 0 0 4px; font-weight: 800; }
 .role ul { margin: 0; padding-left: 20px; }
@@ -276,14 +280,17 @@ dialog::backdrop { background: rgba(43, 42, 40, .5); backdrop-filter: blur(2px);
   :root { --bar-h: 64px; }
   body { overflow: auto; }
   .bar { flex-wrap: wrap; gap: 8px 12px; }
-  .tagline { order: 3; flex-basis: 100%; text-align: left; font-size: .9rem; }
-  main { place-items: start center; }
+  .pitch { order: 3; flex-basis: 100%; justify-items: start; }
+  .tagline { text-align: left; font-size: .9rem; }
+  .proof { justify-content: flex-start; }
+  .proof li:nth-child(n+3) { display: none; }
+  main { place-items: start center; container-type: normal; }
   .floor { aspect-ratio: auto; container-type: normal; width: 100%; display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px 10px; padding: 14px; box-shadow: 0 6px 0 var(--ink); }
   .floor-art, .crates, .hint, .r-patrol, .belt, .roller, .gate { display: none; }
   .slot { position: static; width: auto; height: auto; grid-column: span 6; }
   .slot-projects { grid-column: span 12; }
   .station { height: auto; }
-  .machine { flex: none; height: auto; max-height: 15dvh; }
+  .machine { flex: none; height: auto; max-height: 12dvh; }
   .sign { gap: 6px; padding: 2px 10px 2px 6px; }
   .sign-text b { font-size: .88rem; } .sign-text small { font-size: .72rem; }
   .sign kbd { display: none; }
