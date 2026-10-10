@@ -161,10 +161,10 @@ export const awards = [
 ];
 
 export const results = [
-  { value: '~300%', label: 'throughput and latency gains on a legacy platform', where: 'Accenture' },
-  { value: '20→90%+', label: 'test coverage across several products', where: 'Accenture' },
-  { value: '10+', label: 'applications covered by a monitoring tool I co-designed', where: 'Accenture' },
-  { value: '95%+', label: 'fewer consistency violations in read operations (µTCC)', where: 'INESC-ID' },
+  { value: 'End to end', label: 'Owner of an AI-powered automation platform, from architecture to delivery', where: 'Pictet Tech' },
+  { value: 'LLMs', label: 'Self-service document processing through modular, reusable connectors', where: 'Pictet Tech' },
+  { value: 'Event-driven', label: 'Workflow orchestration on Kafka, IBM MQ and Temporal, built for resilience', where: 'Pictet Tech' },
+  { value: 'Tech lead', label: 'Code review, mentoring and backlog shaping with product owners', where: 'Pictet Tech' },
 ] as const;
 
 export const glance = [
@@ -172,7 +172,7 @@ export const glance = [
   ['Focus', 'Distributed systems, orchestration and AI-assisted automation'],
   ['Based in', 'Lisbon, Portugal (hybrid)'],
   ['Education', 'MSc in Computer Science and Engineering, Instituto Superior Técnico'],
-  ['Recognition', 'Best Student Poster, INForum 2023'],
+  ['Recognition', 'Best Student Poster, INForum 2023 (MSc research)'],
 ] as const;
 
 export const research = {
