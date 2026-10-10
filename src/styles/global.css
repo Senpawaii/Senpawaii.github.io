@@ -159,7 +159,7 @@ a { color: inherit; }
 .card { display: flex; flex-direction: column; width: 94%; height: 94%; min-height: 0; overflow: hidden; }
 
 .id { display: flex; align-items: center; gap: 1.4rem; padding: 1.35rem 2.6rem 1.05rem; flex: none; background: linear-gradient(180deg, #fff 0%, rgba(255,252,246,0) 100%); }
-.portrait { width: 5.2rem; height: 5.2rem; flex: none; object-fit: cover; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--line), 0 10px 28px rgba(28,26,23,.2); }
+.portrait { width: 5.2rem; height: 5.2rem; flex: none; object-fit: cover; object-position: 50% 28%; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--line), 0 10px 28px rgba(28,26,23,.2); }
 .id-text { min-width: 0; }
 .id h1 { margin: 0; font-family: var(--font-display); font-weight: 650; font-size: 2.2rem; line-height: 1.05; letter-spacing: -.02em; font-variation-settings: 'opsz' 96; }
 .id-role { margin: .35rem 0 0; color: var(--ink-2); font-weight: 600; font-size: 1rem; }
@@ -194,7 +194,7 @@ a { color: inherit; }
 .results { list-style: none; padding: 0; margin: 0 0 2.2rem; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 18px; background: #fff; overflow: hidden; }
 .results li { padding: 1.15rem 1.3rem 1.1rem; display: grid; gap: .2rem; align-content: start; border-left: 1px solid var(--line); }
 .results li:first-child { border-left: none; }
-.results b { font-family: var(--font-display); font-weight: 650; font-size: 2.3rem; line-height: 1; letter-spacing: -.02em; color: var(--accent); font-variation-settings: 'opsz' 96; }
+.results b { min-height: 1.9rem; display: flex; align-items: flex-end; font-family: var(--font-display); font-weight: 650; font-size: 1.75rem; line-height: 1.1; letter-spacing: -.02em; color: var(--accent); font-variation-settings: 'opsz' 96; }
 .results span { font-size: .9rem; line-height: 1.35; color: var(--ink); font-weight: 500; }
 .results small { margin-top: .25rem; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
 
@@ -269,7 +269,7 @@ a { color: inherit; }
   .id { flex-wrap: wrap; padding: 1.1rem 1.1rem .9rem; gap: .8rem 1rem; }
   .id { align-items: flex-start; }
   .id-text { flex: 1 1 55%; }
-  .results b { font-size: 1.55rem; }
+  .results b { font-size: 1.3rem; min-height: 0; }
   .results li { padding: .9rem .9rem .85rem; }
   .results span { font-size: .84rem; }
   .portrait { width: 4.2rem; height: 4.2rem; }
